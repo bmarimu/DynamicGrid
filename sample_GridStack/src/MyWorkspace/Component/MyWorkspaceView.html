@@ -1,0 +1,11 @@
+﻿
+<div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}">
+    <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
+        <div class="grid-stack-item-content">
+            <div>
+                <p style="text-align:center;">Panel content</p>
+                <p style="text-align:center;"><button type="button" class="btn btn-success">See More Dock Activity</button></p>
+            </div>
+        </div>
+    </div>
+</div>

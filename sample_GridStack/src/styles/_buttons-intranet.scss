@@ -1,0 +1,183 @@
+/* CSS for the Buttons on the DLC Intranet */
+
+// Button variants from Bootstrap Mixins
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: $background;
+    border-color: $background;
+  }
+  &:hover {
+    color: $color;
+    background-color: $background;
+    border-color: $background;
+  }
+  &:active,
+  &.active,
+  .open>&.dropdown-toggle {
+    color: $color;
+    background-color: $background;
+    border-color: $background;
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: $background;
+      border-color: $background;
+    }
+  }
+  &:active,
+  &.active,
+  .open>&.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size*.75;
+  line-height: $line-height;
+  border-radius: 0;
+}
+
+// Base styles
+// --------------------------------------------------
+.btn {
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-family: "Gotham-Bold";
+  font-weight: $btn-font-weight;
+  font-variant: small-caps;
+  min-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border-radius: 0;
+  white-space: nowrap;
+  text-transform: uppercase;
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+  @include user-select(none);
+  &:hover,
+  &:focus,
+  &.focus {
+    color: $btn-default-color;
+    text-decoration: none;
+  }
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    @include box-shadow(none);
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+    @include opacity(.65);
+    @include box-shadow(none);
+  } // [converter] extracted a& to a.btn
+}
+
+a.btn {
+  &.disabled,
+  fieldset[disabled] & {
+    pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+  }
+}
+
+//Custom default button
+.btn-default {
+  border: 3px solid $brand-primary;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $brand-primary;
+    border: 3px solid $brand-primary;
+    color: #fff;
+  }
+}
+
+//Primary button - used for cancel, decline, etc.  btn-default is really the brand button
+.btn-primary {
+  border: 3px solid $gray-lighter;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $gray-light;
+    border: 3px solid $gray-lighter;
+    color: #fff;
+  }
+}
+
+.btn-success {
+  border: 3px solid $brand-success;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $brand-success;
+    border: 3px solid $brand-success;
+    color: #fff;
+  }
+}
+
+.btn-info {
+  border: 3px solid $brand-info;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $brand-info;
+    border: 3px solid $brand-info;
+    color: #fff;
+  }
+}
+
+.btn-warning {
+  border: 3px solid $status-yellow;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $status-yellow;
+    border: 3px solid $status-yellow;
+    color: $gray;
+  }
+}
+
+.btn-danger {
+  border: 3px solid $brand-danger;
+  font-size: .75em;
+  text-shadow: none;
+  &:hover,
+  &:focus {
+    background-color: $brand-danger;
+    border: 3px solid $brand-danger;
+    color: #fff;
+  }
+}

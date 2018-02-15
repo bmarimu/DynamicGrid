@@ -1,0 +1,174 @@
+$space: 1rem;
+$black: #000;
+$bp-med: 46.8em;
+$pad: 1em;
+$group-height: 85px;
+
+.faq-accordion{
+    h3 {
+        color: $brand-info;
+        font-size: 18pt;
+
+        &.margin-top {
+        margin-top: 50px;
+        }
+    }
+}
+
+.accordion {
+  margin: $space 0;
+}
+
+.accordion-dlc {
+margin: $space 0;
+}
+
+.accordion-group {
+    margin-bottom: 1em;
+  &.is-active {
+    .accordion-collapse {
+      display:block;
+      margin-top:10px;
+    }
+    /*.accordion-heading {
+      a.accordionClickable {
+        &:before {
+          content: '-';
+        }
+      }
+    }
+    .accordion-heading-plus-right {
+        a.accordionClickable {
+          &:after{
+            content: "-";
+          }
+        }
+    }*/
+    
+  }
+}
+
+.accordion-heading-plus-right {
+    color: $black;
+    border-bottom: 2px solid $brand-info;
+    cursor: pointer !important;
+    margin:0px;
+
+    .title{
+        color:$brand-info;
+        font-size: 20px;
+    }
+
+    .position{
+        font-size: 12px;
+    }
+
+    >div{
+        padding-left:0px;
+    }
+
+    .accordionClickable {
+        position: relative;
+        display: block;
+        padding: .5em 1em .5em 3em;
+        color: #212121;
+        font-weight: bold;
+        text-transform: none;
+        text-decoration: none;
+    
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus{
+            text-decoration: none;
+        }
+    
+        /*&:after {
+            position: absolute;
+            content: '+';
+            color: #f6921d;
+            font-weight: bold;
+            right: 4px;
+        }*/
+
+        /*@include breakpoint($bp-med) {
+            font-size: 12pt;
+        }*/
+    }
+}
+.accordion-heading {
+  color: $black;
+  border-bottom: 2px solid $brand-info;
+
+  .accordionClickable {
+    position: relative;
+    display: block;
+    padding: .5em 1em .5em 3em;
+    color: #212121;
+    font-weight: bold;
+    text-transform: none;
+    cursor: pointer !important;
+    
+    &:hover {
+      text-decoration: none;
+      color: $black;
+    }
+    
+    /*&:before {
+      position: absolute;
+      content: '+';
+      color: #f6921d;
+      padding-right: 30px;
+      font-weight: bold;
+      left: 4px;
+    }*/
+
+    /*@include breakpoint($bp-med) {
+      font-size: 12pt;
+    }*/
+  }
+}
+
+.accordion-collapse {
+  display: none;
+  padding: $pad;
+  background: #fff;
+
+  .link {
+    margin: 0;
+
+    /*a.accordionClickable {
+      color: $black;
+      text-decoration: underline;
+      font-weight: 600;
+    }*/
+  }
+
+  .l-grid-item.is-align-right {
+    text-align: left;
+    /*@include breakpoint($bp-med) {
+      text-align: right;
+    }*/
+  }
+}
+
+.accordionOpenCloseCol, .accordion-heading-plus-right{
+    min-height:$group-height;
+    height:auto;
+}
+
+@media (min-width:570px){
+    .accordionOpenCloseCol, .accordion-heading-plus-right{
+        height:$group-height;
+    }
+}
+
+.accordionOpenCloseCol{
+    padding-top:$group-height - 50;
+    text-align:right;
+    color:$brand-info;
+    padding-right:20px;
+    font-size:2.5em;
+    font-weight:bold;
+}

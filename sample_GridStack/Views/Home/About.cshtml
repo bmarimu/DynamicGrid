@@ -1,0 +1,132 @@
+﻿@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+@model sample_GridStack.Models.MyWorkspaceViewModel
+@using Newtonsoft.Json
+<link href="~/Content/tile-bookmark.css" rel="stylesheet" />
+<div id="myworkspace-container">
+    <h3>WELCOME TO My WORKSPACE!</h3>
+
+</div>
+<br>
+
+@*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>
+    <template id="gridstack-template">
+        <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes">
+            <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
+                <div class="grid-stack-item-content">
+                    <div>
+                        <p style="text-align:center;">Panel content</p>
+                        <p style="text-align:center;"><button type="button" class="btn btn-success">See More Dock Activity</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </template>*@
+<script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+<style url="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css"></style>
+
+@*<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>*@
+
+
+@*<script src="https://eids-alpha-dev-bookmarks-funcapp.azurewebsites.net/api/GetFileResponse?code=CfDJ8AAAAAAAAAAAAAAAAAAAAAB23BvsGH8IkwXn5Xh8HrXvpR7T-U1ufJApwtR13Mi2uKMJdQfT8lBLuQF6AzWUJBQgQPhjJY0earjNH8KzXwm3rE25xsqu6sssebxUTJocAZl6zaowNOpvRf1U-od81AaneG9MR-pMms9ZQmSoNKivNcXlMIaTlaZrQQFmV_1nCw&type=js"></script>*@
+
+<div class="container">
+    <div class="myworkspace-container centered">
+        <p class="myworkspace-title">Welcome To Your Workspace!</p>
+        <p class="myworkspace-summary">
+            Here you will find interactive tools to help you organize your day to day activities.
+            Please check back periodically to see new tools as they become available.
+        </p>
+    </div>
+</div>
+<div class="spacer-2x-bottom"></div>
+
+<div class="grid-myworkspace">
+    <div class="spacer-2x-bottom"></div>
+    <div data-bind="component: {name: 'my-workspace', params: $data}"></div>
+    <div class="spacer-2x-bottom"></div>
+</div>
+@*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>*@
+
+
+<template id="gridstack-template">
+    <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes">
+        <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
+            <div class="grid-stack-item-content" data-bind="attr: {'id': 'tile-content_' + $data.tileId()}">
+                <div>
+                    @*<div id="tile-info" data-bind="text:$data.title">test</div>*@
+                    <div id="tile-info" data-bind="html:$data.data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+@*<script>
+
+        var _widgets = [
+            { x: 0, y: 0, width: 3, height: 4, title: 'Bookmark', data: '', titleid:'zz73jd' },
+            { x: 4, y: 0, width: 3, height: 4, title: 'MyApps', data: '', titleid: 'zz73je'},
+            { x: 8, y: 0, width: 3, height: 4, title: 'MyResources', data: '', titleid: 'zz73jf'}
+
+        ];
+
+        var vm = new sample_GridStack.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
+        ko.applyBindings(vm);
+
+    </script>*@
+
+
+<script>
+
+
+
+
+
+
+
+    //function checkloadjscssfile(filename, filetype) {
+    //    var filesadded = "" //list of files already added
+    //    if (filesadded.indexOf("[" + filename + "]") == -1) {
+    //        loadjscssfile(filename, filetype)
+    //        filesadded += "[" + filename + "]" //List of files added in the form "[filename1],[filename2],etc"
+    //    }
+    //    else
+    //        alert("file already added!")
+    //}
+
+
+
+    //function loadjscssfile(filename, filetype) {
+    //    if (filetype == "js") { //if filename is a external JavaScript file
+    //        //var fileref = document.createElement('script')
+    //        //fileref.setAttribute("type", "text/javascript")
+    //        //fileref.setAttribute("src", filename)
+    //        loadJS(filename);
+    //    }
+    //    else if (filetype == "css") { //if filename is an external CSS file
+    //        //var fileref = document.createElement("link")
+    //        //fileref.setAttribute("rel", "stylesheet")
+    //        ////fileref.setAttribute("type", "text/css")
+    //        //fileref.setAttribute("href", filename)
+    //        //fileref.setAttribute("media", "all")
+    //        loadCSS(filename);
+    //    }
+    //    if (typeof fileref != "undefined") {
+    //        alert(JSON.stringify(fileref));
+    //        document.getElementsByTagName("head")[0].appendChild(fileref)
+    //    }
+    //}
+
+
+    console.log("loading MyWorkspace Page..");
+    //Get the tile collection from the model
+   var modelJson = JSON.stringify(@Html.Raw(JsonConvert.SerializeObject(Model)));
+    jsonObj = JSON.parse(modelJson);
+    console.log(JSON.stringify(jsonObj.TileCollection));
+    _widgets = jsonObj.TileCollection;
+    console.log(_widgets);
+    var vm = new sample_GridStack.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
+    ko.applyBindings(vm);
+</script>

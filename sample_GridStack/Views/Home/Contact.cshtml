@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+<div class="divStatusContainerBlue">testing......</div>
+<p class="divStatusContainerBlue">Use this area to provide additional information.</p>
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('.divStatusContainerBlue').popover({
+            trigger: 'hover',
+            container: 'body',
+            content: 'No extreme weather expected. Operations at normal staffing levels. Business as normal.',
+            title: 'blue',
+            placement: 'top',
+            template: '<div class="popover popoverBlue" role="tooltip"><div class="arrow"></div><h3 class="popover-title dailyOperatingStatusBluePopupHeader" style="background-color:#1E00C1"></h3><div class="popover-content"></div></div>'
+        });
+
+    })
+    
+
+</script>

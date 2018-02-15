@@ -1,0 +1,253 @@
+﻿<style>
+    body {
+        background-color: #F1F1F1;
+    }
+
+    .grid-stack {
+        width: 100%;
+    }
+    /* Gridstack */
+    .grid-stack-item-content {
+        display: inline-block;
+        background: #FEFEFE;
+        border: 2px solid #FAFAFA;
+        box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+        margin: 0 2px 15px;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        padding: 15px;
+        padding-bottom: 5px;
+        background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+        opacity: 1;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+
+
+    /* Align Panel Text */
+    .panel-title {
+        text-align: center;
+        /*color: #FFF;*/
+    }
+
+        .panel-title > a {
+            color: inherit;
+        }
+</style>
+
+<br />
+<div id="myworkspace-container" class="divStatusContainerBlue">
+    <h3>WELCOME TO YOUR WORKSPACE!</h3>
+
+</div>
+<br>
+@*<div id="test123">
+    <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes">
+        <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
+            <div class="grid-stack-item-content">Hello</div>
+        </div>
+    </div>
+</div>*@
+
+@*<div data-bind="component: {name: 'my-workspace', params: $data}"></div>
+
+<template id="gridstack-template">
+    <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes">
+        <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
+            <div class="grid-stack-item-content">
+                <div>
+                    <p style="text-align:center;">Panel content</p>
+                    <p style="text-align:center;"><button type="button" class="btn btn-success">See More Dock Activity</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>*@
+
+
+<div class="container-fluid">
+    <h1>knockout.js Demo</h1>
+    <div>
+        <button data-bind="click: add_new_widget">Add new widget</button>
+    </div>
+    <br>
+    <div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>
+</div>
+<script>
+    //import('/src/MyWorkspace/MyWorkspace.js').then((MyWorkspace) => {
+    //    var vm = MyWorkspace.MyWorkSpaceScript.MyWorkSpaceController();
+    //    ko.applyBindings(vm);
+    //}).catch((err) => {
+    //    console.log("Chunk loading failed")
+    //})
+
+    //System.config({
+    //    baseURL: "/src/",
+    //    defaultJSExtensions: true,
+    //    path: { "npm:":"node_modules"},
+    //    map: {
+
+    //        "jquery-ui": "npm:jquery-ui/jquery-ui.js"
+
+    //    }
+    //});
+    //System.import('/src/MyWorkspace/MyWorkspace.js').then(namespace => {
+    //    .catch(function (err) { console.error(err); });
+
+    //import('/src/MyWorkspace/MyWorkspace.js').then(namespace => {
+    //    var vm = MyWorkspace.MyWorkSpaceScript.MyWorkSpaceController();
+    //    namespace.default;
+    //});
+    //$(function () {
+    //define(["require", "exports", "/src/MyWorkspace/MyWorkspace.js"], function (require, exports, vm) {
+    //   var vm = new exports.MyWorkSpaceScript.MyWorkSpaceController();
+    //    ko.applyBindings(vm);
+    //});
+
+    // var vm = new MyWorkSpaceScript.MyWorkSpaceController();
+
+
+    //System.config({
+    //    defaultJSExtensions: true
+    //});
+
+    //    var options = {
+    //        cell_height: 80,
+    //        vertical_margin: 10
+    //    };
+    //    $('.grid-stack').gridstack(options);
+
+    //    require(["MyWorkSpaceScript/MyWorkSpaceController"], function (exports) {
+    //        var _widgets = [
+    //            { x: 0, y: 0, width: 4, height: 2 },
+    //            { x: 2, y: 0, width: 6, height: 2 },
+    //            { x: 4, y: 0, width: 6, height: 2 },
+    //            { x: 6, y: 0, width: 4, height: 2 }
+    //        ];
+    //        let vm = new exports.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
+    //    ko.applyBindings(vm);
+    //});
+
+    //var System = require('es6-module-loader').System;
+    //    System.import('/src/MyWorkspace/MyWorkspace.js').then(function (exports) {
+    //        console.log("loading MyWorkspace Page..");
+    //        var _widgets = [
+    //            { x: 0, y: 0, width: 3, height: 2 },
+    //            { x: 2, y: 0, width: 3, height: 2 },
+    //            { x: 4, y: 0, width: 3, height: 2 },
+
+    //        ];
+    //        var vm = new exports.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
+    //        ko.applyBindings(vm);
+    //}).catch(function (e) { console.log(e); });
+    //import loadSomething from 'bundle-loader?lazy!./MyWorkspace/MyWorkspace'
+
+    //console.log("loading MyWorkspace Page..");
+    //var _widgets = [
+    //    { x: 0, y: 0, width: 3, height: 2 },
+    //    { x: 2, y: 0, width: 3, height: 2 },
+    //    { x: 4, y: 0, width: 3, height: 2 },
+
+    //];
+    //var vm = new loadSomething.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
+    //ko.applyBindings(vm);
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
+
+
+    $('.divStatusContainerBlue').popover({
+        trigger: 'hover',
+        container: 'body',
+        content: 'No extreme weather expected. Operations at normal staffing levels. Business as normal.',
+        title: 'blue',
+        placement: 'bottom',
+        template: '<div class="popover popoverBlue" role="tooltip"><div class="arrow"></div><h3 class="popover-title dailyOperatingStatusBluePopupHeader" style="background-color:#1E00C1"></h3><div class="popover-content"></div></div>'
+    });
+
+    function switchPopover() {
+        $('[data-toggle="popover"]').popover({
+            trigger: 'hover'
+        });
+    }
+    /* CAROUSEL - HOMEPAGE   */
+    $('.collapse').collapse({
+        toggle: true
+    });
+
+ 
+        ko.components.register('dashboard-grid', {
+            viewModel: {
+            createViewModel: function (controller, componentInfo) {
+                    var ViewModel = function (controller, componentInfo) {
+                        var grid = null;
+
+                        this.widgets = controller.widgets;
+
+                        this.afterAddWidget = function (items) {
+                            if (grid == null) {
+            grid = $(componentInfo.element).find('.grid-stack').gridstack({
+                auto: false
+            }).data('gridstack');
+        }
+
+                            var item = _.find(items, function (i) { return i.nodeType == 1 });
+                            grid.addWidget(item);
+                            ko.utils.domNodeDisposal.addDisposeCallback(item, function () {
+            grid.remove_widget(item);
+        });
+                        };
+                    };
+
+                    return new ViewModel(controller, componentInfo);
+                }
+            },
+            template:
+                [
+                    '<div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: afterAddWidget}">',
+                    '   <div class="grid-stack-item" data-bind="attr: {\'data-gs-x\': $data.x, \'data-gs-y\': $data.y, \'data-gs-width\': $data.width, \'data-gs-height\': $data.height, \'data-gs-auto-position\': $data.auto_position}">',
+                    '       <div class="grid-stack-item-content"><button data-bind="click: $root.delete_widget">Delete me</button></div>',
+                    '   </div>',
+                    '</div> '
+                ].join('')
+        });
+
+        $(function () {
+            var Controller = function (widgets) {
+                var self = this;
+
+                this.widgets = ko.observableArray(widgets);
+
+                this.add_new_widget = function () {
+            this.widgets.push({
+                x: 0,
+                y: 0,
+                width: Math.floor(1 + 3 * Math.random()),
+                height: Math.floor(1 + 3 * Math.random()),
+                auto_position: true
+            });
+        };
+
+                this.delete_widget = function (item) {
+            self.widgets.remove(item);
+        };
+            };
+
+            var widgets = [
+                {x: 0, y: 0, width: 2, height: 2},
+                {x: 2, y: 0, width: 4, height: 2},
+                {x: 6, y: 0, width: 2, height: 4},
+                {x: 1, y: 2, width: 4, height: 2}
+            ];
+
+            var controller = new Controller(widgets);
+            ko.applyBindings(controller);
+        });
+
+
+</script>

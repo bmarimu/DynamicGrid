@@ -1,0 +1,801 @@
+/* --------------------------------------------------------------------------------------
+BOOTSTRAP ELEMENTS FOR DLC THEME:
+  These elements are customized items that appear on the DLC Intranet page. Typography,
+  buttons, icons and elements are included. below.
+
+---------------------------------------------------------------------------------------*/
+
+.container-dlc {
+    @include container-fixed;
+    max-width: $container-dlc-max-width;
+}
+
+
+/*  FOR WIDGETS WITH GRAY BACKGROUNDS   */
+
+.gray-cont {
+  background-color: #f0f0f0;
+  width: 100%;
+  height: 100%;
+}
+
+.orange-container {
+    color: #333;
+    width: 90%;
+    height: auto;
+}
+
+#rectangle {
+    width: 90%;
+    height: auto;
+    border: 1px solid $brand-info;
+    background: white;
+    margin: 1em 0 1em 1em;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+
+/*------------------------------------------
+MAKE COLUMNS THE SAME HEIGHT WHEN NECESSARY
+-------------------------------------------*/
+
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+
+/*------------------------------------------
+                    SPACERS
+                    -------------------------------------------*/
+
+.top-spacer1x {
+    padding-top: 1em;
+}
+
+.top-spacer2x {
+    padding-top: 2em;
+}
+
+.top-spacer3x {
+    padding-top: 3em;
+}
+
+.bottom-spacer75 {
+    padding-bottom: .75em;
+}
+
+.bottom-spacer1x {
+    padding-bottom: 1em;
+}
+
+.bottom-spacer2x {
+    padding-bottom: 2em;
+}
+
+.bottom-spacer3x {
+    padding-bottom: 3em;
+}
+
+.transparent-txt {
+    font-size: 1em;
+    color: transparent;
+}
+
+.info-center-row-spacer {
+    padding-top:10px;
+}
+
+.apps-pad {
+    padding: 2em 0 2em 80px;
+}
+
+.app-icon {
+    margin-top: -2.5em;
+}
+
+
+.widget-spacer-left{
+    margin-left:$widget-spacer-margin;
+}
+
+.widget-spacer-right{
+    margin-right:$widget-spacer-margin;
+}
+
+.widget-spacer-top{
+    margin-top:$widget-spacer-margin;
+}
+
+.widget-spacer-bottom{
+    margin-bottom:$widget-spacer-margin;
+}
+
+/*
+This class - .pull-pad -  is to align full row pull quotes with surrounding content.  You may have to create similar classes to handle all pull quote situations when the .row.is-flex class is applied to the parent container.
+*/
+
+.pull-pad {
+    padding-top: 2em;
+}
+
+.widget-icon-75 {
+    margin-top: -2.5em;
+    width: 75px;
+}
+
+
+/*------------------------------------------
+           FOOTER & CONTAINER FIXES
+-------------------------------------------*/
+
+body {
+    padding-bottom: 0px !important;
+    margin-bottom: -40px !important;
+}
+
+footer.well {
+    margin-bottom: -20px !important;
+}
+
+.container-dlc:before,
+.container-dlc:after,
+.row.is-flex:before,
+.row.is-flex:after {
+  content: normal; // IE doesn't support `initial`
+}
+
+
+/*------------------------------------------
+                    BORDERS
+                    -------------------------------------------*/
+
+.orange-border {
+    border: 1px solid $brand-info;
+}
+
+.blue-border {
+    border: 1px solid $brand-primary;
+}
+
+.blue-border-3x {
+    border: 3px solid $brand-primary;
+}
+
+.orange-box {
+    color: white;
+    background-color: $brand-info;
+    border: 1px solid $brand-info;
+}
+
+
+/* TYPOGRAPHY */
+
+h1,
+.h1 {
+    color: black;
+    font-family: Gotham-Bold;
+}
+
+h2,
+.h2 {
+    color: black;
+    font-family: Gotham-Bold;
+}
+
+h3,
+.h3 {
+    color: $brand-primary;
+    text-transform: uppercase;
+}
+
+.h3-sm {
+	font-size: 1.5em;
+	margin: 10px;
+	text-align: center;
+}
+
+h4,
+.h4 {
+    color: $brand-info;
+    text-transform: uppercase;
+}
+
+.h4-sm {
+	font-size: 1.5em;
+	padding-top: 10px;
+	text-align: center;
+    margin-top:0px;
+}
+
+h5,
+.h5 {
+    color: $brand-primary;
+    font-family: Gotham-Bold;
+    font-variant: small-caps;
+    text-transform: uppercase;
+}
+
+h6,
+.h6 {
+    color: $brand-info;
+    font-family: Gotham-Bold;
+    font-variant: small-caps;
+    text-transform: uppercase;
+}
+
+.weather-head {
+    color: white;
+}
+/* TOP NAV SEARCH CONTROL & LINKS */
+
+.icon-text {
+    font-family: "Gotham-Light";
+    font-size: .85em;
+    padding-top: .5em;
+}
+
+.quicklinks-text {
+    color: #000;
+    font-family: "Gotham-Bold";
+    font-size: .85em;
+    /*font-variant: small-caps;
+    text-transform: uppercase;*/
+    &:hover,
+    &:focus,
+    {
+        background-color: $status-yellow;
+        /*font-size: .95em;*/
+    }
+}
+
+.contactw-title {
+    color: $brand-info;
+    font-family: "Gotham-Bold";
+    font-size: 1.15em;
+    font-variant: small-caps;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.contactw-bold {
+    color: #000;
+    font-family: "Gotham-Bold";
+    font-size: 1em;
+    font-variant: small-caps;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.contactw-text {
+    color: #000;
+    font-family: "Gotham-Book";
+    font-size: 1em;
+    text-align: right;
+    &:hover,
+    &:focus,
+    {
+        background-color: $status-yellow;
+        font-size: 1.1em;
+    }
+}
+
+p.biz-link > a {
+    color: #000;
+    text-decoration: none;
+    &:hover,
+    &:focus,
+    {
+        background-color: $status-yellow;
+        font-style: bold;
+        font-size: 1.1em;
+    }
+}
+
+.pull-quote {
+    color: #000;
+    font-family: "Gotham-Italic";
+    font-size: 1.25em;
+    line-height: 1.5em;
+    margin: .75em 0 .75em 0;
+    text-align: center;
+}
+
+.img-caption,
+.welcome-date {
+    color: $brand-primary;
+    font-family: "Gotham-Book";
+    font-size: .75em;
+    line-height: 1em;
+}
+
+.weather-head {
+    color: white;
+}
+
+.widget-bold {
+    color: #000;
+    font-family: "Gotham-Bold";
+    font-size: .75em;
+    font-variant: small-caps;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.widgetlinks-text {
+    color: #000;
+    font-family: "Gotham-Bold";
+    font-size: .75em;
+    font-variant: small-caps;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus,
+    {
+        background-color: $status-yellow;
+        font-size: .85em;
+    }
+}
+
+.widget-contact {
+    color: #000;
+    font-family: "Gotham-Book";
+    font-size: .75em;
+    text-align: right;
+
+    &:hover,
+    &:focus,
+    {
+        background-color: $status-yellow;
+        font-size: .85em;
+    }
+}
+
+
+/*------------------------------------------
+     TOP NAV, SEARCH CONTROL & LINKS
+-------------------------------------------*/
+
+.nav-brand {
+    margin-top: -1em;
+    float: left;
+    margin-top:0px;
+    font-size: 20px;
+    line-height: 24px;
+    height: auto;
+    margin-left:20px;
+}
+
+
+/*------------------------------------------
+            PRIMARY NAVIGATION
+-------------------------------------------*/
+
+nav,
+.navbar {
+    background-color: transparent;
+    border-color: transparent;
+    color: #000;
+    margin-bottom:0px;
+}
+
+.navbar-default,
+.navbar-nav {
+    background-color: transparent;
+    border-color: transparent;
+    color: #000;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .active > a {
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+        color: $brand-primary;
+    }
+}
+
+.eyebrow-link {
+    color: #000;
+    float: left;
+    font-family: Gotham-Bold;
+    font-size: .75em;
+    font-variant: small-caps;
+    margin-top: 1em;
+    text-transform: uppercase; // Active state
+    &.active > a {
+        color: #000000;
+
+        &:hover,
+        &:focus {
+            color: $brand-primary;
+        }
+    }
+}
+
+.eyebrow-link .dropdown-menu {
+    // the dropdown box
+    border: 3px solid $dropdown-fallback-border; // IE8 fallback
+    border: 3px solid $dropdown-border;
+}
+/*  SECONDARY NAVIGATION */
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 2.5;
+    color: #000;
+    white-space: nowrap;
+    font-size: .75em;
+    font-variant: titling-caps;
+    text-align: center;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus,
+    {
+        background-color: $brand-primary;
+        background-image: none;
+        color: #fff;
+    }
+}
+
+
+/*  SEARCH HEADER */
+
+input[type="search"] {
+    box-shadow: none;
+    outline-color: transparent;
+    outline-offset: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.search-header {
+    display: inline;
+    width: 100%;
+    float: left;
+    height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+    padding: $padding-base-vertical $padding-base-horizontal;
+    font-size: .75em;
+    line-height: $line-height-base;
+    color: $input-color;
+    background-color: $input-bg;
+    background-image: none;
+    border: 0;
+    border-bottom: 2px solid $brand-warning;
+    /* @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s); // Customize the `:focus` state to imitate native WebKit styles.
+                        @include form-control-focus; // Placeholder
+                        @include placeholder; // Unstyle the caret on `<select>`s in IE10+. */
+    &::-ms-expand {
+        border: 0;
+        background-color: transparent;
+    }
+}
+
+input > .search-header {
+    border: 0;
+    border-style: solid;
+    border-color: $brand-warning;
+    border-image: none;
+}
+
+.btn-search {
+    border: 0;
+    border-color: #fff;
+    border-width: 0;
+    color: #00aeef;
+    display: inline;
+    margin-top: .2em;
+    margin-left: -2em;
+    background-color: transparent;
+
+    &:focus,
+    &:hover {
+        color: #00aeef;
+    }
+}
+
+.pull-quote {
+  color: #000;
+  font-family: "Gotham-Italic";
+  font-size: 1.25em;
+  line-height: 1.5em;
+  margin: .75em 0 .75em 0;
+  text-align: center;
+}
+
+/*------------------------------------------
+                    FOOTER
+                    -------------------------------------------*/
+
+.footer {
+    background-color: #000;
+    padding-top: 2em;
+    width: 100%;
+    min-height: 450px;
+}
+
+.foot-sm-head-orange {
+    color: #f6921d;
+    font-family: "Gotham-Medium";
+    font-size: .75em;
+    line-height: .75em;
+}
+
+.foot-sm-brand-orange > a {
+    color: #f6921d;
+    font-family: "Gotham-Medium";
+    font-size: .75em;
+    font-variant: small-caps;
+    text-transform: uppercase;
+
+    &:focus,
+    &:hover {
+        color: #00aeef;
+    }
+}
+
+.foot-md-head-orange {
+    color: #f6921d;
+    font-family: "Gotham-Bold";
+    font-size: 1em;
+}
+
+.foot-sm-head-blue {
+    color: #00AEEF;
+    font-family: "Gotham-Medium";
+    font-size: 1em;
+    margin-left: 1em;
+    margin-top: .5em;
+}
+
+.foot-sm-gray {
+    color: #cfcfcf;
+    font-family: "Gotham-Book";
+    font-size: .75em;
+    width: 90%;
+    margin-bottom: 1em;
+}
+
+.foot-sm-gray-indent {
+    color: #cfcfcf;
+    font-family: "Gotham-Book";
+    font-size: .75em;
+    width: 90%;
+    margin-bottom: 1em;
+    padding-left: 24px;
+    text-indent: -24px;
+}
+
+.foot-md-white {
+    color: #fff;
+    font-family: "Gotham-Book";
+    font-size: 1em;
+    line-height: 1.2em;
+    width: 90%;
+}
+
+.spacer-block-btm {
+    width: 100%;
+    height: 2em;
+    background: white;
+}
+
+.spacer-block1x {
+    width: 100%;
+    height: 1em;
+    background: black;
+}
+
+.social-top-margin {
+    margin: 1em 0 2em 0;
+}
+
+.social-left-margin {
+    margin-left: 1em;
+}
+
+
+/*------------------------------------------
+                    POPOVERS - DLC STYLE
+                    -------------------------------------------*/
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $zindex-popover;
+    display: none;
+    max-width: $popover-max-width;
+    padding: 1px; // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
+    // So reset our font and text properties to avoid inheriting weird values.
+    @include reset-text;
+    font-size: $font-size-base;
+    background-color: $popover-bg;
+    background-clip: padding-box;
+    border: 2px solid $popover-fallback-border-color;
+    border: 2px solid $popover-border-color;
+    border-radius: $border-radius-large;
+    @include box-shadow(0 5px 10px rgba(0, 0, 0, .2));
+}
+
+.popover-content {
+    font-family: "Gotham-Book";
+    font-size: .75em;
+}
+
+.popoverBlue{
+    border-color:$status-blue;
+}
+
+.popoverBlue.top>.arrow,.popoverBlue.righ>.arrow,.popoverBlue.bottom>.arrow,.popoverBlue.left>.arrow{
+    border-top-color: $status-blue;
+}
+
+.popoverYellow{
+    border-color:#e6da00;
+}
+
+.popoverYellow.top>.arrow,.popoverYellow.right>.arrow,.popoverYellow.bottom>.arrow,.popoverYellow.left>.arrow{
+    border-top-color: #e6da00;
+}
+
+.popoverRed{
+    border-color:#D0021B;
+}
+
+.popoverRed.top>.arrow,.popoverRed.right>.arrow,.popoverRed.bottom>.arrow,.popoverRed.left>.arrow{
+    border-top-color: #D0021B;
+}
+
+/*------------------------------------------
+          SVG ICONS INFO CENTER - DLC STYLE
+-------------------------------------------*/
+
+.info-75 {
+    width: 75px;
+}
+
+
+/*------------------------------------------
+          NEWS WIDGET SLIDERS
+-------------------------------------------*/
+
+.container-slider {
+    position: relative;
+    width: 50%;
+
+    @media only screen and (max-width: 767px) {
+        width: 100%;
+        padding: 1em 1em;
+    }
+}
+
+.image-slider {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+}
+
+.container-slider:hover .overlay {
+    height: 100%;
+}
+
+.slider-header {
+    color: #000;
+    font-family: Gotham-Bold;
+    font-size: 1.4em;
+
+    @media only screen and (max-width: 767px) {
+        font-size: 1.2em;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 1em;
+    }
+}
+
+a.slider-link {
+    color: #00aeef;
+    font-family: Gotham-Bold;
+    font-size: 1.2em;
+
+    @media only screen and (max-width: 767px) {
+        font-size: 1em;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: .85em;
+    }
+
+    &:focus,
+    &:hover {
+        color: #f88604;
+    }
+}
+
+.slider-text {
+    white-space: nowrap;
+    color: rgb(34, 34, 34);
+    font-family: Gotham-Book;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    position: absolute;
+    overflow: wrap;
+    top: 50%;
+    left: 50%;
+    padding: 5%; // width: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    @media only screen and (max-width: 767px) {
+        padding: 1em 1em;
+        font-size: 1em;
+        line-height: 1.3em;
+    }
+
+    @media only screen and (max-width: 400px) {
+        padding: 1em 1em;
+        font-size: .85em;
+        line-height: 1.1em;
+    }
+}
+
+/* begin homepage */
+
+.hp-sm-widget{
+    max-width:$container-dlc-max-width / 3;
+}
+
+.hp-lg-widget{
+    max-width:$container-dlc-max-width * 2 / 3;
+}
+
+.hp-gray-bg-widget, .gray-bg-widget {
+    background-color: $gray-bg;
+}
+
+/* end homepage */
+
+/* OfficerTeam */
+.accordion-dlc{
+    background-color: $gray-bg;
+    padding:20px;
+    padding-bottom:4px; /* 20px (above) - 1em (margin)*/
+}

@@ -1,0 +1,22 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "lib": [ "dom", "es2015.promise", "es5" ],
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "module": "amd", 
+    "moduleResolution": "Node",
+    "typeRoots": [ "node_modules/@types" ]
+   
+  },
+  "exclude": [
+    "wwwroot",
+    "obj",
+    "bin"
+  ]
+}
