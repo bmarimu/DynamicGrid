@@ -2,10 +2,7 @@
 @model sample_GridStack.Models.MyWorkspaceViewModel
 @using Newtonsoft.Json
 <link href="~/Content/tile-bookmark.css" rel="stylesheet" />
-<div id="myworkspace-container">
-    <h3>WELCOME TO My WORKSPACE!</h3>
 
-</div>
 <br>
 
 @*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>
@@ -31,21 +28,24 @@
 
 @*<script src="https://eids-alpha-dev-bookmarks-funcapp.azurewebsites.net/api/GetFileResponse?code=CfDJ8AAAAAAAAAAAAAAAAAAAAAB23BvsGH8IkwXn5Xh8HrXvpR7T-U1ufJApwtR13Mi2uKMJdQfT8lBLuQF6AzWUJBQgQPhjJY0earjNH8KzXwm3rE25xsqu6sssebxUTJocAZl6zaowNOpvRf1U-od81AaneG9MR-pMms9ZQmSoNKivNcXlMIaTlaZrQQFmV_1nCw&type=js"></script>*@
 
-<div class="container">
-    <div class="myworkspace-container centered">
-        <p class="myworkspace-title">Welcome To Your Workspace!</p>
-        <p class="myworkspace-summary">
-            Here you will find interactive tools to help you organize your day to day activities.
-            Please check back periodically to see new tools as they become available.
-        </p>
-    </div>
-</div>
-<div class="spacer-2x-bottom"></div>
 
-<div class="grid-myworkspace">
-    <div class="spacer-2x-bottom"></div>
-    <div data-bind="component: {name: 'my-workspace', params: $data}"></div>
-    <div class="spacer-2x-bottom"></div>
+    <div class="row myworkspace-container-row">
+        <div class="myworkspace-container centered col-xs-12">
+            <h3>My Workspace</h3>
+            <p>
+                Welcome To Your Workspace. Here you will find interactive tools to help you organize your day to day activities.
+                Please check back periodically to see new tools as they become available.
+            </p>
+        </div>
+    </div>
+
+<div class="spacer-2x-bottom"></div>
+<div class="row">
+    <div class="grid-myworkspace">
+        <div class="spacer-2x-bottom"></div>
+        <div data-bind="component: {name: 'my-workspace', params: $data}"></div>
+        <div class="spacer-2x-bottom"></div>
+    </div>
 </div>
 @*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>*@
 

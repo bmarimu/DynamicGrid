@@ -1,4 +1,39 @@
-﻿
+﻿/*
+    Temp Overrides ( Needed to adjust container sizing )
+*/
+@media (min-width: 768px) {
+    .container {
+        max-width: 1385px;
+    }
+}
+
+body{
+    background-color:#f0f0f0;
+}
+
+.myworkspace-container-row {
+    padding: 0 10px;
+} 
+.myworkspace-container {
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+    background-color: #fff;
+    border-top: #F38131 solid 2px;
+    margin-bottom: 75px;
+}
+    .myworkspace-container h3 {
+        color: #F38131;
+        font-weight:300;
+        margin-top:0;
+        text-transform:none;
+    }
+
+    .myworkspace-container p {
+        padding-left: 20px;
+        color: #909090;
+    }
+
+
 .grid-stack {
     width: 100%;
     /*border: solid .5px #c4c4c4;*/
@@ -6,51 +41,73 @@
 /* Gridstack */
 .grid-stack-item-content {
     display: inline-block;
-    background: #FEFEFE;
+    background: #FFF;
     border: 2px solid #FAFAFA;
-    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
     margin: 0 2px 15px;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
     padding: 15px;
-    padding-bottom: 5px;
-    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-    opacity: 1;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
     -o-transition: all .2s ease;
     transition: all .2s ease;
 }
 
-
-/* Align Panel Text */
-.tile-title {
+.grid-stack-item-content .tile-title {
+    font-weight: 300;
+    font-size: 1.5em;
     text-align: center;
-    font-size: 1.2em;
-    /*font-weight: bold;*/
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     color: #00aeef;
-    /*color: #FFF;*/
+ }
+
+.grid-stack > .grid-stack-item > .grid-stack-item-content {
+    overflow:initial;
 }
 
 .bookmarkLink a:hover {
     background-color: #fff300;
 }
 
-
 .bookmarkLink a {
     color: black;
     text-decoration: none;
-    font-size: .75em;
-    font-weight: bolder;
+    font-size: 1.05em;
+    font-weight: bold;
     text-transform: uppercase;
+    display:block;
+    padding:5px;
 }
 
 .bookmarkLink {
     padding: 0px;
+    position:relative;
+    margin-top:20px;
 }
-
+    .bookmarkLink:before {
+        content: "\e044";
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-size:1.5em;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #00aeef;
+        top:-60px;
+        background-color:#fff;
+        border:#00aeef solid 2px;
+        border-radius:50%;
+        padding:12px 10px 10px;
+        width:50px;
+        height:50px;
+        left:50%;
+        -webkit-transform:translateX(-50%);
+        transform:translateX(-50%);
+        position:absolute;
+    }
     .bookmarkLink > ul {
         list-style: none; /* Remove HTML bullets */
         padding: 0;
@@ -60,6 +117,9 @@
 
     .bookmarkLink > li {
         padding-left: 16px;
+    }
+    .bookmarkLink > ul > li:not(:last-child){
+        margin-bottom:5px;
     }
 
         .bookmarkLink > li:before {
