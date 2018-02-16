@@ -4,17 +4,29 @@
 @media (min-width: 768px) {
     .container {
         max-width: 1385px;
-        width:90%;
+        width: 90%;
     }
 }
 
-body{
-    background-color:#f0f0f0;
+body {
+    background-color: #fff;
+}
+
+.myworkspace-wrap {
+    background-color: #f0f0f0;
+    margin-right: calc(-100vw / 2 + 100% / 2);
+    margin-left: calc(-100vw / 2 + 100% / 2);
+    padding-right: calc(100vw / 2 - 100% /2);
+    padding-left: calc(100vw / 2 - 100% /2 );
+    padding-bottom:35px;
+}
+
 }
 
 .myworkspace-container-row {
     padding: 0 10px;
-} 
+}
+
 .myworkspace-container {
     padding: 20px;
     box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
@@ -22,11 +34,12 @@ body{
     border-top: #F38131 solid 2px;
     margin-bottom: 50px;
 }
+
     .myworkspace-container h3 {
         color: #F38131;
-        font-weight:300;
-        margin-top:0;
-        text-transform:none;
+        font-weight: 300;
+        margin-top: 0;
+        text-transform: none;
     }
 
     .myworkspace-container p {
@@ -34,38 +47,42 @@ body{
         color: #909090;
     }
 
-.grid-myworkspace{
-    margin-left:-20px;
-    margin-right:-20px;
-} 
+@media (min-width: 768px) {
+    .grid-myworkspace {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
 .grid-stack {
     width: 100%;
 }
 
     .grid-stack > .grid-stack-item {
-        padding: 0 30px;
+        padding: 0 20px;
     }
-    .grid-stack > .grid-stack-item > .grid-stack-item-content {
-        display: inline-block;
-        background: #FFF;
-        border: 2px solid #FAFAFA;
-        box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
-        margin: 0 2px 15px;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        padding: 15px;
-        -webkit-transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -o-transition: all .2s ease;
-        transition: all .2s ease;
-        position: relative;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        overflow:initial;
-    }
+
+        .grid-stack > .grid-stack-item > .grid-stack-item-content {
+            display: inline-block;
+            background: #FFF;
+            border: 2px solid #FAFAFA;
+            box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+            margin: 0 2px 15px;
+            -webkit-column-break-inside: avoid;
+            -moz-column-break-inside: avoid;
+            column-break-inside: avoid;
+            padding: 15px;
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -o-transition: all .2s ease;
+            transition: all .2s ease;
+            position: relative;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: initial;
+        }
 
 
 .grid-stack-item-content .tile-title {
@@ -74,7 +91,7 @@ body{
     text-align: center;
     padding-bottom: 12px;
     color: #00aeef;
- }
+}
 
 .grid-stack > .grid-stack-item > .ui-resizable-se {
     cursor: se-resize;
@@ -94,43 +111,45 @@ body{
     font-size: 1.05em;
     font-weight: bold;
     text-transform: uppercase;
-    display:block;
-    padding:5px;
+    display: block;
+    padding: 5px;
 }
 
-@media (max-width:415px){
-    .bookmarkLink a{
-        font-size:0.75em;
+@media (max-width:415px) {
+    .bookmarkLink a {
+        font-size: 0.75em;
     }
 }
 
 .bookmarkLink {
     padding: 0px;
-    position:relative;
-    margin-top:20px;
+    position: relative;
+    margin-top: 20px;
 }
+
     .bookmarkLink:before {
         content: "\e044";
         font-family: 'Glyphicons Halflings';
         font-style: normal;
-        font-size:1.5em;
+        font-size: 1.5em;
         font-weight: normal;
         line-height: 1;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #00aeef;
-        top:-60px;
-        background-color:#fff;
-        border:#00aeef solid 2px;
-        border-radius:50%;
-        padding:12px 10px 10px;
-        width:50px;
-        height:50px;
-        left:50%;
-        -webkit-transform:translateX(-50%);
-        transform:translateX(-50%);
-        position:absolute;
+        top: -60px;
+        background-color: #fff;
+        border: #00aeef solid 2px;
+        border-radius: 50%;
+        padding: 12px 10px 10px;
+        width: 50px;
+        height: 50px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        position: absolute;
     }
+
     .bookmarkLink > ul {
         list-style: none; /* Remove HTML bullets */
         padding: 0;
@@ -141,15 +160,16 @@ body{
     .bookmarkLink > li {
         padding-left: 16px;
     }
-    .bookmarkLink > ul > li:not(:last-child){
-        margin-bottom:5px;
+
+    .bookmarkLink > ul > li:not(:last-child) {
+        margin-bottom: 5px;
     }
 
-        .bookmarkLink > li:before {
-            /*content: "•"; Insert content that looks like bullets */
-            padding-right: 8px;
-            /*color: blue;  Or a color you prefer */
-        }
+    .bookmarkLink > li:before {
+        /*content: "•"; Insert content that looks like bullets */
+        padding-right: 8px;
+        /*color: blue;  Or a color you prefer */
+    }
 
 .bookmarkLinks > div {
     height: 100%;
@@ -166,14 +186,16 @@ body{
 .tile-popout-modal {
     position: absolute;
     box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
-    top:25px;
-    right:-75px;
+    top: 25px;
+    right: -75px;
 }
-.tile-popout-modal a{
-    display:block;
-    padding:5px 5px 5px 30px;
-    position:relative;
-}
-    .tile-popout-modal a:hover {
-        background-color: #fff300;
+
+    .tile-popout-modal a {
+        display: block;
+        padding: 5px 5px 5px 30px;
+        position: relative;
     }
+
+        .tile-popout-modal a:hover {
+            background-color: #fff300;
+        }
