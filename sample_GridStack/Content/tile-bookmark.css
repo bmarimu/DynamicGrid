@@ -98,6 +98,12 @@ body{
     padding:5px;
 }
 
+@media (max-width:415px){
+    .bookmarkLink a{
+        font-size:0.75em;
+    }
+}
+
 .bookmarkLink {
     padding: 0px;
     position:relative;
