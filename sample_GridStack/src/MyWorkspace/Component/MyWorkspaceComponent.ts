@@ -42,11 +42,15 @@ export class MyWorkspaceViewModel {
             console.log(JSON.stringify(this.componentInfo));
             
             this.grid = $(this.componentInfo.element).find('.grid-stack').gridstack({
-                cellHeight: 80,
-                verticalMargin: 10,
+                cellHeight: 70,
+                verticalMargin: 35,
                 auto: false,
+                disableResize: true,
+                disableDrag:true
                
             }).data('gridstack');
+
+           
         }
 
         let item = _.find(items, (i: any) => { return i.nodeType == 1 });

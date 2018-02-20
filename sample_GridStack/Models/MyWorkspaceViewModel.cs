@@ -33,7 +33,7 @@ namespace sample_GridStack.Models
             {
                 //ToDo: 
                 if (tileList != null)
-                    tileList = tileList.Where(x => x.EmployeeId == employeeId && x.TileDesc == "Bookmark");
+                    tileList = tileList.Where(x => x.EmployeeId == employeeId).ToList();
             }
 
             tileCollectionVM.TileCollection = tileList;

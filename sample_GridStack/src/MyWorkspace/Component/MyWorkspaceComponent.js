@@ -33,9 +33,11 @@ define(["require", "exports", "underscore"], function (require, exports, _) {
                 if (_this.grid === null) {
                     console.log(JSON.stringify(_this.componentInfo));
                     _this.grid = $(_this.componentInfo.element).find('.grid-stack').gridstack({
-                        cellHeight: 80,
-                        verticalMargin: 10,
+                        cellHeight: 70,
+                        verticalMargin: 35,
                         auto: false,
+                        disableResize: true,
+                        disableDrag: true
                     }).data('gridstack');
                 }
                 var item = _.find(items, function (i) { return i.nodeType == 1; });

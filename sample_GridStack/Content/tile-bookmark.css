@@ -1,81 +1,124 @@
-﻿
+﻿/*
+    Temp Overrides ( Needed to adjust container sizing )
+*/
+@media (min-width: 768px) {
+    .container {
+        max-width: 1385px;
+        width: 90%;
+    }
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+.myworkspace-container-row {
+    padding: 0 10px;
+}
+
+.myworkspace-container {
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+    background-color: #fff;
+    border-top: #F38131 solid 2px;
+    margin-bottom: 50px;
+}
+
+    .myworkspace-container h3 {
+        color: #F38131;
+        font-weight: 300;
+        margin-top: 0;
+        text-transform: none;
+    }
+
+    .myworkspace-container p {
+        padding-left: 20px;
+        color: #909090;
+    }
+
+.grid-myworkspace {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
 .grid-stack {
     width: 100%;
-    /*border: solid .5px #c4c4c4;*/
-}
-/* Gridstack */
-.grid-stack-item-content {
-    display: inline-block;
-    background: #FEFEFE;
-    border: 2px solid #FAFAFA;
-    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-    margin: 0 2px 15px;
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
-    padding: 15px;
-    padding-bottom: 5px;
-    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-    opacity: 1;
-    -webkit-transition: all .2s ease;
-    -moz-transition: all .2s ease;
-    -o-transition: all .2s ease;
-    transition: all .2s ease;
 }
 
-
-/* Align Panel Text */
-.tile-title {
-    text-align: center;
-    font-size: 1.2em;
-    /*font-weight: bold;*/
-    padding-bottom: 10px;
-    color: #00aeef;
-    /*color: #FFF;*/
-}
-
-.bookmarkLink a:hover {
-    background-color: #fff300;
-}
-
-
-.bookmarkLink a {
-    color: black;
-    text-decoration: none;
-    font-size: .75em;
-    font-weight: bolder;
-    text-transform: uppercase;
-}
-
-.bookmarkLink {
-    padding: 0px;
-}
-
-    .bookmarkLink > ul {
-        list-style: none; /* Remove HTML bullets */
-        padding: 0;
-        margin: 0;
+    .grid-stack > .grid-stack-item {
+        padding: 0 30px;
     }
 
-
-    .bookmarkLink > li {
-        padding-left: 16px;
-    }
-
-        .bookmarkLink > li:before {
-            /*content: "•"; Insert content that looks like bullets */
-            padding-right: 8px;
-            /*color: blue;  Or a color you prefer */
+        .grid-stack > .grid-stack-item > .grid-stack-item-content {
+            display: inline-block;
+            background: #FFF;
+            border: 2px solid #FAFAFA;
+            box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+            margin: 0 2px 15px;
+            -webkit-column-break-inside: avoid;
+            -moz-column-break-inside: avoid;
+            column-break-inside: avoid;
+            padding: 15px;
+            -webkit-transition: all .2s ease;
+            -moz-transition: all .2s ease;
+            -o-transition: all .2s ease;
+            transition: all .2s ease;
+            position: relative;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: initial;
         }
 
-.bookmarkLinks > div {
-    height: 100%;
-    overflow: auto;
+
+.grid-stack-item-content .tile-title {
+    font-weight: 300;
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 12px;
+    color: #00aeef;
 }
 
-.bookmarkLinks-text {
-    font-weight: bold;
-    /* hack to indent all lines except first */
-    padding-left: 0.5em;
-    text-indent: -0.5em;
+.grid-stack > .grid-stack-item > .ui-resizable-se {
+    cursor: se-resize;
+    width: 20px;
+    height: 20px;
+    right: 30px;
+    bottom: 0;
 }
+
+
+.tile-popout-modal {
+    position: absolute;
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+    top: 25px;
+    right: -75px;
+}
+
+    .tile-popout-modal a {
+        display: block;
+        padding: 5px 5px 5px 30px;
+        position: relative;
+    }
+
+        .tile-popout-modal a:hover {
+            background-color: #fff300;
+        }
+
+.tile-popout-modal {
+    position: absolute;
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.75);
+    top: 25px;
+    right: -75px;
+}
+
+    .tile-popout-modal a {
+        display: block;
+        padding: 5px 5px 5px 30px;
+        position: relative;
+    }
+
+        .tile-popout-modal a:hover {
+            background-color: #fff300;
+        }

@@ -9,23 +9,31 @@ using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace sample_GridStack.Models
 {
     public class MyWorkspaceTileData
     {
- 
         public string Data { get; set; }
 
-    
-        [Required]
         public string TileId { get; set; }
 
- 
         public string TileDesc { get; set; }
 
-
         public string EmployeeId { get; set; }
+
+        public string GetTileDataUri { get; set; }
+
+        public string GetTileScriptUri { get; set; }
+
+        public string GetTileStyleUri { get; set; }
+
+        public string endpoint = "https://shared-alpha-dev-api-mgmt.azure-api.net";
+
+        public string headerKey = "Ocp-Apim-Subscription-Key";
+
+        public string headerVal = "d002f0985c3242dbbd1fe73eb97aff3e";
 
         public async Task<TResult> GetAsync<TResult>(string uriString) where TResult : class
         {
@@ -43,12 +51,12 @@ namespace sample_GridStack.Models
             }
         }
 
-        public async Task<TileData> GetTileData(string tileId, string EmployeeId)
+        public async Task<Byte[]> GetTileScript(string resource)
         {
-            TileData tileData = new TileData();
+            Byte[] script = null;
             try
             {
-                var resource = "/V1/Tiles/Bookmarks/Users/bmarimuthu@duqlight.com/";
+               // var resource = $"/V1/Tiles/Bookmarks/Users/{EmployeeId}/Tiles/{tileId}";
                 var endpoint = "https://shared-alpha-dev-api-mgmt.azure-api.net";
                 var headerKey = "Ocp-Apim-Subscription-Key";
                 var headerVal = "d002f0985c3242dbbd1fe73eb97aff3e";
@@ -61,32 +69,44 @@ namespace sample_GridStack.Models
                     client.DefaultRequestHeaders.Add(headerKey, headerVal);
 
                     string tileDetails = "";
-                    
+
                     HttpResponseMessage response = await client.GetAsync(resource);
                     if (response.IsSuccessStatusCode)
                     {
                         using (HttpContent content = response.Content)
                         {
-                            Task<string> result = content.ReadAsStringAsync();
-                            tileDetails = result.Result;
-
-                            if (tileDetails != null)
-                            {
-                                tileData.TileId = tileId;
-                                tileData.TileDesc = tileDetails;
-                            }
+                            script = content.ReadAsByteArrayAsync().Result;
+                           
                         }
                     }
                 }
-
+                
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
 
             }
+            return script;
+        }
 
-            return tileData;
-            
+        public async Task<string> GetTileData(string resource)
+        {
+            string tileDetails = string.Empty;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(endpoint);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
+                client.DefaultRequestHeaders.Add(headerKey, headerVal);
+
+
+                HttpResponseMessage response = await client.GetAsync(resource);
+                if (response.IsSuccessStatusCode)
+                    using (HttpContent content = response.Content)
+                        tileDetails = content.ReadAsStringAsync().Result;
+            }
+            return tileDetails;
+
         }
     }
 }

@@ -161,6 +161,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\myworkspace-grid.css" />
+    <Content Include="Content\nprogress.css" />
     <Content Include="Content\tile-bookmark.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
