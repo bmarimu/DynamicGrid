@@ -176,6 +176,7 @@
     <Content Include="package.json" />
     <Content Include="src\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="src\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\MyWorkspace\Bookmark.js" />
     <Content Include="src\MyWorkspace\Component\MyWorkspaceView.html" />
     <Content Include="src\MyWorkspace\MyWorkspace-JS.js" />
     <Content Include="src\styles\gridstyle.css" />

@@ -23,7 +23,7 @@ export module MyWorkSpaceScript {
             if (_widgets !== null) {
                 //let test_widget = new widgets(1,1, 4, 4);
                 _widgets.forEach(r =>
-                    self.tileInfo.push(new widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data, r.ScriptUri, r.StyleUri, r.ReadUri)));
+                    self.tileInfo.push(new widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data, r.ScriptUri, r.StyleUri, r.ReadUri,r.EditUri)));
                 // this.mywidgets.push(test_widget);
 
                 // console.log("List we have now inside object:" + JSON.stringify(self.tileInfo()))
@@ -35,9 +35,19 @@ export module MyWorkSpaceScript {
                     var status = self.MakeTileDetailsRequest(item);
                     console.log(`${tile_counter} call to tile :${status}`);
                 });
+                
             }
             
         }
+
+
+        public Tile_Hover = (tileInfo: any) => {
+            console.log("on tile hover of tileid:" + tileInfo.tileId());
+            $(".smart-menu").hover(function () {
+                $('#smart-menu-' + tileInfo.tileId()).toggleClass('hidden');
+            });
+        }
+
 
         public loadjscssfile = (filename, filetype) => {
             if (filetype == "js")
@@ -154,7 +164,7 @@ export module MyWorkSpaceScript {
                 return await Promise.all([
                     this.CallScriptPromise(tileInfo.scriptUri(), 'js', tileInfo.tileId()),
                     this.CallStylePromise(tileInfo.styleUri(), 'css', tileInfo.tileId()),
-                    this.CallDataPromise(tileInfo.readUri(), tileInfo.tileId())
+                    this.CallDataPromise(tileInfo)
                     ]);
 
             }
@@ -177,12 +187,12 @@ export module MyWorkSpaceScript {
                             dataType: 'script',
                             url: "/Home/GetApiScript/",
                             data: { 'url': url, 'type': type },
-                            beforeSend: function () { $("#loading-progress_" + tileId).show(); }, // <Show OverLay
+                            //beforeSend: function () { $("#loading-progress_" + tileId).show(); }, // <Show OverLay
                             success: function (response) {
                                 console.log('successfully loaded scripts..');
                                 $("#loading-progress_" + tileId).hide();
                             },
-                            complete: function () { $("#loading-progress_" + tileId).hide(); } //<Hide Overlay
+                            //complete: function () { $("#loading-progress_" + tileId).hide(); } //<Hide Overlay
                         });
                     });
                 }
@@ -197,26 +207,18 @@ export module MyWorkSpaceScript {
             }
         }
 
-        public CallDataPromise = (url: string, tileId: string): Promise<string> => {
+        public CallDataPromise = (tileInfo: widgets): Promise<string> => {
             try {
-                console.log("Loading for tile Data:" + url);
-                return new Promise<string>(resolve => {
-                    let self = this;
-                    let tileDataObj = new WidgetsData(tileId, '', '');
-                    //tileDataObj.TileId = tileId;
-                    // console.log("Value passed to this fun:" + tileId)
-                    if (tileId === null || tileId == undefined)
-                        return;
-                    let data: any = ko.toJS(tileDataObj);
+                return new Promise<string>(resolve => {                
                     let myTrigger;
                     NProgress.start();
                     $.ajax({
                         type: 'POST',
                         url: "/Home/GetAPITileData/",
-                        data: { 'resource': url },
+                        data: { 'resource': tileInfo.readUri() },
                     
                         beforeSend: function (xhr) {
-                            $("#loading-progress_" + tileId).show();
+                            $("#loading-progress_" + tileInfo.tileId()).show();
                             myTrigger = setInterval(function () {
                                 NProgress.inc();
                             }, 400);
@@ -224,14 +226,13 @@ export module MyWorkSpaceScript {
                         complete: function () {
                             NProgress.done();
                             clearInterval(myTrigger);
-                            $("#loading-progress_" + tileId).hide();
+                            $("#loading-progress_" + tileInfo.tileId()).hide();
                         },
                         success: function (response) {
-                            const data = JSON.stringify(response);
-                            self.tileInfo().forEach((item: widgets) => {
-                                if (item.tileId() === tileId)
-                                    item.data(response);
-                            });
+                            if (response.Success)
+                                tileInfo.data(response.Message);
+                            else
+                                console.log("Failed to get tile data response or its empty..");
                         }
                        
                     });
@@ -269,6 +270,48 @@ export module MyWorkSpaceScript {
                     console.log("file already added!");
                     //return 'true';
                 });
+            }
+        }
+
+
+        public EditTile = (tileInfo: any) => {
+            
+            console.log(JSON.stringify(tileInfo.readUri()) + "is passed for Editing...");
+            try {
+                return new Promise<string>(resolve => {
+                    let myTrigger;
+                    NProgress.start();
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Home/GetAPIEditTileData/",
+                        data: { 'resource': tileInfo.editUri() },
+
+                        beforeSend: function (xhr) {
+                            //$("#loading-progress_" + tileInfo.tileId()).show();
+                            myTrigger = setInterval(function () {
+                                NProgress.inc();
+                            }, 400);
+                        },
+                        complete: function () {
+                            NProgress.done();
+                            clearInterval(myTrigger);
+                            //$("#loading-progress_" + tileInfo.tileId()).hide();
+                        },
+                        success: function (response) {
+                            if (response.Success) {
+                                tileInfo.data(response.Message);
+                                localStorage.clear();
+                                localStorage.setItem('currentTileId', JSON.stringify(tileInfo.tileId()));
+                            }
+                            else
+                                console.log("Failed to get tile data response or its empty..");
+                        }
+
+                    });
+                });
+            }
+            catch (e) {
+                console.log(e);
             }
         }
         

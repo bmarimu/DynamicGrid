@@ -108,5 +108,25 @@ namespace sample_GridStack.Models
             return tileDetails;
 
         }
+
+        public string GetEditTileData(string resource)
+        {
+            string tileDetails = string.Empty;
+            tileDetails = @"<div class='bookmarkLink'>
+                            <div class='tile-title'>Edit Bookmark Links</div>
+                           <div class='form-group'>
+                              <label for='title'>LinkTitle</label>
+                              <input type='text' class='form-control' id='title'>
+                            </div>
+                            <div class='form-group'>
+                              <label for='link'>Link</label>
+                              <input type='text' class='form-control' id='link'>
+                            </div>
+                            <div class='btn-section'><button id='save-btn' type='button' class='btn btn-default' onclick='SaveAndRedirect()'>Save</button>
+                            <button type='button' class='btn btn-default'>Cancel</button></div>
+                    </div>";
+            return tileDetails;
+
+        }
     }
 }

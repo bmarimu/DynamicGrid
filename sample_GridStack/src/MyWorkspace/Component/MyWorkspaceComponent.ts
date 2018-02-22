@@ -46,7 +46,7 @@ export class MyWorkspaceViewModel {
                 verticalMargin: 35,
                 auto: false,
                 disableResize: true,
-                disableDrag:true
+                disableDrag: false
                
             }).data('gridstack');
 

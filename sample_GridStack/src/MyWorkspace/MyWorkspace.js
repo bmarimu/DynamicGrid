@@ -46,6 +46,12 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                 this.widgetData = ko.observable(null);
                 this.tileData = null;
                 this.thing = ko.observable('');
+                this.Tile_Hover = function (tileInfo) {
+                    console.log("on tile hover of tileid:" + tileInfo.tileId());
+                    $(".smart-menu").hover(function () {
+                        $('#smart-menu-' + tileInfo.tileId()).toggleClass('hidden');
+                    });
+                };
                 this.loadjscssfile = function (filename, filetype) {
                     if (filetype == "js")
                         _this.loadJS(filename);
@@ -137,7 +143,7 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                                 return [4 /*yield*/, Promise.all([
                                         this.CallScriptPromise(tileInfo.scriptUri(), 'js', tileInfo.tileId()),
                                         this.CallStylePromise(tileInfo.styleUri(), 'css', tileInfo.tileId()),
-                                        this.CallDataPromise(tileInfo.readUri(), tileInfo.tileId())
+                                        this.CallDataPromise(tileInfo)
                                     ])];
                             case 1: return [2 /*return*/, _a.sent()];
                             case 2:
@@ -160,12 +166,11 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                                     dataType: 'script',
                                     url: "/Home/GetApiScript/",
                                     data: { 'url': url, 'type': type },
-                                    beforeSend: function () { $("#loading-progress_" + tileId).show(); },
+                                    //beforeSend: function () { $("#loading-progress_" + tileId).show(); }, // <Show OverLay
                                     success: function (response) {
                                         console.log('successfully loaded scripts..');
                                         $("#loading-progress_" + tileId).hide();
                                     },
-                                    complete: function () { $("#loading-progress_" + tileId).hide(); } //<Hide Overlay
                                 });
                             });
                         }
@@ -179,25 +184,17 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                         console.log("This error happens when loading a data: " + e);
                     }
                 };
-                this.CallDataPromise = function (url, tileId) {
+                this.CallDataPromise = function (tileInfo) {
                     try {
-                        console.log("Loading for tile Data:" + url);
                         return new Promise(function (resolve) {
-                            var self = _this;
-                            var tileDataObj = new MyWorkspaceModel_1.WidgetsData(tileId, '', '');
-                            //tileDataObj.TileId = tileId;
-                            // console.log("Value passed to this fun:" + tileId)
-                            if (tileId === null || tileId == undefined)
-                                return;
-                            var data = ko.toJS(tileDataObj);
                             var myTrigger;
                             NProgress.start();
                             $.ajax({
                                 type: 'POST',
                                 url: "/Home/GetAPITileData/",
-                                data: { 'resource': url },
+                                data: { 'resource': tileInfo.readUri() },
                                 beforeSend: function (xhr) {
-                                    $("#loading-progress_" + tileId).show();
+                                    $("#loading-progress_" + tileInfo.tileId()).show();
                                     myTrigger = setInterval(function () {
                                         NProgress.inc();
                                     }, 400);
@@ -205,14 +202,13 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                                 complete: function () {
                                     NProgress.done();
                                     clearInterval(myTrigger);
-                                    $("#loading-progress_" + tileId).hide();
+                                    $("#loading-progress_" + tileInfo.tileId()).hide();
                                 },
                                 success: function (response) {
-                                    var data = JSON.stringify(response);
-                                    self.tileInfo().forEach(function (item) {
-                                        if (item.tileId() === tileId)
-                                            item.data(response);
-                                    });
+                                    if (response.Success)
+                                        tileInfo.data(response.Message);
+                                    else
+                                        console.log("Failed to get tile data response or its empty..");
                                 }
                             });
                         });
@@ -247,6 +243,43 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                         });
                     }
                 };
+                this.EditTile = function (tileInfo) {
+                    console.log(JSON.stringify(tileInfo.readUri()) + "is passed for Editing...");
+                    try {
+                        return new Promise(function (resolve) {
+                            var myTrigger;
+                            NProgress.start();
+                            $.ajax({
+                                type: 'POST',
+                                url: "/Home/GetAPIEditTileData/",
+                                data: { 'resource': tileInfo.editUri() },
+                                beforeSend: function (xhr) {
+                                    //$("#loading-progress_" + tileInfo.tileId()).show();
+                                    myTrigger = setInterval(function () {
+                                        NProgress.inc();
+                                    }, 400);
+                                },
+                                complete: function () {
+                                    NProgress.done();
+                                    clearInterval(myTrigger);
+                                    //$("#loading-progress_" + tileInfo.tileId()).hide();
+                                },
+                                success: function (response) {
+                                    if (response.Success) {
+                                        tileInfo.data(response.Message);
+                                        localStorage.clear();
+                                        localStorage.setItem('currentTileId', JSON.stringify(tileInfo.tileId()));
+                                    }
+                                    else
+                                        console.log("Failed to get tile data response or its empty..");
+                                }
+                            });
+                        });
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                };
                 var self = this;
                 this.Stylefilesadded = "";
                 this.Scriptfilesadded = "";
@@ -256,7 +289,7 @@ define(["require", "exports", "./Model/MyWorkspaceModel"], function (require, ex
                 if (_widgets !== null) {
                     //let test_widget = new widgets(1,1, 4, 4);
                     _widgets.forEach(function (r) {
-                        return self.tileInfo.push(new MyWorkspaceModel_1.widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data, r.ScriptUri, r.StyleUri, r.ReadUri));
+                        return self.tileInfo.push(new MyWorkspaceModel_1.widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data, r.ScriptUri, r.StyleUri, r.ReadUri, r.EditUri));
                     });
                     // this.mywidgets.push(test_widget);
                     // console.log("List we have now inside object:" + JSON.stringify(self.tileInfo()))

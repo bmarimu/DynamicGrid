@@ -3,7 +3,7 @@ define(["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var widgets = /** @class */ (function () {
         // innerwidgets: KnockoutObservableArray<widgets>;
-        function widgets(tileId, x, y, width, height, title, data, scriptUri, styleUri, dataUri) {
+        function widgets(tileId, x, y, width, height, title, data, scriptUri, styleUri, dataUri, edituri) {
             this.tileId = ko.observable(tileId);
             this.x = ko.observable(x);
             this.y = ko.observable(y);
@@ -15,6 +15,7 @@ define(["require", "exports"], function (require, exports) {
             this.scriptUri = ko.observable(scriptUri);
             this.styleUri = ko.observable(styleUri);
             this.readUri = ko.observable(dataUri);
+            this.editUri = ko.observable(edituri);
         }
         return widgets;
     }());

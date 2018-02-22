@@ -60,11 +60,29 @@ namespace sample_GridStack.Controllers
         }
 
         [HttpPost]
-        public async Task<string> GetAPITileData(string resource)
+        public async Task<JsonResult> GetAPITileData(string resource)
         {
             MyWorkspaceTileData model = new MyWorkspaceTileData();
             var tiledata = await model.GetTileData(resource);
-            return tiledata;
+            if (!String.IsNullOrEmpty(tiledata))
+                return Json(new ModelResult() { Success = true, Message = tiledata });
+            else
+                return Json(new ModelResult() { Success = false });
+        
+           // return tiledata;
+
+        }
+        [HttpPost]
+        public JsonResult GetAPIEditTileData(string resource)
+        {
+            MyWorkspaceTileData model = new MyWorkspaceTileData();
+            var tiledata = model.GetEditTileData(resource);
+            if (!String.IsNullOrEmpty(tiledata))
+                return Json(new ModelResult() { Success = true, Message = tiledata });
+            else
+                return Json(new ModelResult() { Success = false });
+
+            // return tiledata;
 
         }
         [HttpGet]

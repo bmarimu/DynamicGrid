@@ -37,7 +37,7 @@ define(["require", "exports", "underscore"], function (require, exports, _) {
                         verticalMargin: 35,
                         auto: false,
                         disableResize: true,
-                        disableDrag: true
+                        disableDrag: false
                     }).data('gridstack');
                 }
                 var item = _.find(items, function (i) { return i.nodeType == 1; });

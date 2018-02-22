@@ -11,9 +11,10 @@
     scriptUri: KnockoutObservable<string>;
     styleUri: KnockoutObservable<string>;
     readUri: KnockoutObservable<string>;
+    editUri: KnockoutObservable<string>;
 
     // innerwidgets: KnockoutObservableArray<widgets>;
-    constructor(tileId: string, x: number, y: number, width: number, height: number, title: string, data: string, scriptUri: string, styleUri: string, dataUri: string) {
+    constructor(tileId: string, x: number, y: number, width: number, height: number, title: string, data: string, scriptUri: string, styleUri: string, dataUri: string,edituri:string) {
         this.tileId = ko.observable(tileId);
         this.x = ko.observable(x);
         this.y = ko.observable(y);
@@ -25,6 +26,7 @@
         this.scriptUri = ko.observable(scriptUri);
         this.styleUri = ko.observable(styleUri);
         this.readUri = ko.observable(dataUri);
+        this.editUri = ko.observable(edituri)
     }
 }
 
