@@ -1,0 +1,129 @@
+﻿.searchCol {
+    .navbar-collapse{
+        padding:0 15px 0 0;
+
+        .navbar-form{
+            padding:0;
+            width:100%;
+            margin:0 -15px;
+
+            .form-group{
+                width:100%;
+            }
+        }
+    }
+}
+fieldset .sfsearchSubmit {
+    width: 10px;
+    height: 32px;
+    color: #fff;
+    border: none;
+    padding: 2px 10px;
+    border: 0;
+    background-color: transparent;
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.form-control.k-widget {
+    padding-right: 20px;
+}
+
+.k-autocomplete .k-input, .k-dropdown-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input, .k-selectbox .k-input, .k-textbox > input {
+    padding-right: 20px;
+}
+
+input[type="search"] {
+    box-shadow: none;
+    outline-color: transparent;
+    outline-offset: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control.search-header.k-input {
+    height: 41px;
+    line-height: 42px;
+    border-bottom: 2px solid #ff9900;
+    border-radius:0;
+    box-shadow: none;
+    font-size:1.25em;
+}
+
+.sfsearchBox {
+    .search-header {
+        display: inline;
+        width: 150%;
+        float: left;
+        height: 38px;
+        padding: 6px 12px;
+        font-size: .75em;
+        line-height: 1.5;
+        color: #555555;
+        background-color: #fff;
+        background-image: none;
+        border: none;
+        border-radius:0;
+        border-bottom: 2px solid #ff9900;
+        vertical-align: middle;
+        min-width: 160px
+    }
+}
+
+.k-list-container.k-popup.k-group.k-reset.k-state-border-up {
+    //max-width:220px !important;
+    width: auto !important;
+}
+
+input > .search-header {
+    border: 0;
+    border-style: solid;
+    border-color: #ff9900;
+    border-image: none;
+}
+
+.btn-search {
+    border: 0;
+    border-color: #fff;
+    border-width: 0;
+    color: #00aeef;
+    display: inline;
+    margin-top: .2em;
+    margin-left: -2em;
+    background-color: transparent;
+}
+
+
+.form-control.search-header.k-input:focus {
+    border-color: #00aeef;
+}
+
+.k-popup.k-calendar-container, .k-popup.k-list-container {
+    margin-top: 11px;
+    border-color: #00aeef;
+}
+
+.k-list-scroller {
+    background-color: #fff;
+}
+
+.k-list-scroller li.k-item.k-state-hover {
+    cursor: pointer;
+    background-color: #00aeef;
+    color: #fff;
+}
+
+.k-nodata {
+    background-color: #fff;
+}
+
+@media (min-width: 768px) {
+    .navbar-form .form-control {
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+    }
+}

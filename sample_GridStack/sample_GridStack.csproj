@@ -149,12 +149,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DocumentDBRepository.cs" />
     <Compile Include="Models\MyWorkspaceTileData.cs" />
     <Compile Include="Models\MyWorkspaceViewModel.cs" />
+    <Compile Include="Models\SearchPeopleDetailModel.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,7 +220,6 @@
     <Content Include="src\styles\_buttons-intranet.scss" />
     <Content Include="src\styles\_custom.scss" />
     <Content Include="src\styles\_daily-status.scss" />
-    <Content Include="src\styles\_news-list.scss" />
     <Content Include="tsconfig.json" />
     <Content Include="src\fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="src\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
@@ -236,6 +237,14 @@
     <Content Include="src\fonts\Gotham-BookIta.otf" />
     <Content Include="src\fonts\Gotham-Light.otf" />
     <Content Include="src\fonts\Gotham-Medium.otf" />
+    <Content Include="src\styles\global\_bootstrap-mod.scss" />
+    <Content Include="src\styles\global\_bootstrap337.scss" />
+    <Content Include="src\styles\page_specific\_home.scss" />
+    <Content Include="src\styles\widgets\_home_widgets.scss" />
+    <Content Include="src\styles\widgets\_navigation.scss" />
+    <Content Include="src\styles\widgets\_search.scss" />
+    <Content Include="Views\SearchDetails\SearchDetails.cshtml" />
+    <Content Include="src\styles\_links.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

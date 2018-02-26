@@ -1,0 +1,34 @@
+﻿/* begin quick links */
+.quickLink, .icon-text {
+    color: black;
+}
+
+.quickLink {
+    padding: 0px;
+}
+
+.quickLinksInfoCenterRow {
+    height: 525px;
+}
+
+.quickLinksInfoCenterRow > div {
+    margin-bottom: 1em;
+}
+
+.quickLinksInfoCenterRow .blue-border, .quickLinksInfoCenterRow .row, .quickLinksInfoCenterRow > div {
+    height: 100%;
+    overflow: auto;
+}
+
+.quickLinkRow {
+    padding: 0px 20px;
+}
+
+.quick-link-col-left, .quick-link-col-right {
+    margin-bottom: 5px;
+}
+
+.quickLinksContainer {
+    padding-bottom: 20px;
+}
+/* end quick links*/
