@@ -1,5 +1,7 @@
 $icon-font-path: '../fonts/';
-@import "bootstrap337"; // bower:scss stock with our customizations at the core to avoid duplicate styles
+//import proxima nova
+@import url("https://use.typekit.net/zru5jsj.css");
+@import "global/bootstrap337"; // bower:scss stock with our customizations at the core to avoid duplicate styles
 //from the stock project file
 .browserupgrade {
   margin: 0.2em 0;
@@ -14,13 +16,13 @@ $icon-font-path: '../fonts/';
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    font-family: proxima-nova, sans-serif;
 }
 
 svg {
-    font-family: Gotham-Bold;
+    font-family: proxima-nova, sans-serif;
     font-size: 12px;
     font-weight: bold;
-    src: url("../fonts/Gotham-Bold.otf") format("opentype");
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -120,15 +122,25 @@ svg {
 @media print {
     b, strong {
         font-weight: bold;
-        font-family: Gotham-Bold;
     }
 }
 
 //imports to override small bootstrap behaviors
-@import "bootstrap-mod";
+@import "global/bootstrap-mod";
+
+//Page specific styles
+@import "page_specific/home";
+@import "page_specific/search_details";
+
+//Widget specific classes
+@import "widgets/home_widgets";
+
 //custom style modules for the DLC Intranet
 @import "daily-status";
+@import "links";
 @import "buttons-intranet";
-@import "news-list";
 @import "accordion";
 @import "gridstack";
+
+@import "widgets/navigation";
+@import "widgets/search";

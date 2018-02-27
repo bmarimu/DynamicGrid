@@ -1,8 +1,14 @@
 /* CSS for the Daily Status Module on the DLC Intranet Homepage */
 
+.dailyOperatingStatusContainer{
+    a{
+        display:block;
+        height:100%;
+    }
+} 
 .blueday {
-  src: url('/Content/images/blue-control.svg');
-  align-content: center;
+    src: url('/Content/images/blue-control.svg');
+    align-content: center;
 }
 
 .redday {

@@ -36,36 +36,7 @@ $link-hover-decoration: underline !default;
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
-@font-face {
-  font-family: Gotham-Book;
-  src: url("../fonts/Gotham-Book.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Gotham-Bold;
-  src: url("../fonts/Gotham-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Gotham-Light;
-  src: url("../fonts/Gotham-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Gotham-Medium;
-  src: url("../fonts/Gotham-Medium.otf") format("opentype");
-}
-
-@font-face {
-    font-family: Gotham-Italic;
-    src: url("../fonts/Gotham-BookIta.otf") format("opentype");
-}
-
-$font-family-sans-serif: 'Gotham-Book',
-'Gotham-Bold',
-'Gotham-Italic',
-'Gotham-Light',
-'Gotham-Medium',
+$font-family-sans-serif: 'proxima-nova',
 sans-serif !default;
 $font-family-serif: Georgia,
 'Times New Roman',

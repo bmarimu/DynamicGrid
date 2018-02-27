@@ -1,4 +1,5 @@
 ﻿const webpack = require("webpack");
+var ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
@@ -10,12 +11,13 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js", ".json", ".html"],
         alias: {
             // bind version of jquery-ui
-            //"jquery-ui": "jquery-ui/jquery-ui.js",
             'jquery-ui': 'jquery-ui/ui',
+
             // bind to modules;
             modules: path.join(__dirname, "node_modules")
         }
 	},
+
 
 	module: {
 		loaders: [
@@ -26,7 +28,10 @@ module.exports = {
                 test: /\.ts?$/,
                 use: "ts-loader"
             },
-
+            {
+                test: /\.master?$/,
+                use: "raw-loader"
+            },
 
             // All image files will be handled here
             {
@@ -51,7 +56,6 @@ module.exports = {
                 use: "html-loader"
             },
             
-            //{ test: /underscore/, use: 'exports?_' },
             // All files with ".html" will be handled 
             //{ test: /\.html$/, loader: "html-loader" },
 
@@ -67,6 +71,9 @@ module.exports = {
         	jQuery: "jquery",
             "window.jQuery": "jquery",
 
+            //Tether: "tether",
+            //"window.Tether": "tether",
+            Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
             Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
             Button: "exports-loader?Button!bootstrap/js/dist/button",
             Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
@@ -76,8 +83,7 @@ module.exports = {
             Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
             Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
             Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
-            Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Util: "exports-loader?Util!bootstrap/js/dist/util"
         }),
         
         // Clean dist folder.
@@ -86,13 +92,13 @@ module.exports = {
         }),
 
         // avoid publishing when compilation failed.
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
 
-        //new HtmlWebpackPlugin({
-        //	inject: "head",
-        //	filename: "../Views/Shared/_Layout.cshtml",
-        //	template: "./Views/Shared/_Layout_Template.cshtml"
-        //})
+        new HtmlWebpackPlugin({
+        	inject: "head",
+        	filename: "../Views/Shared/_Layout.cshtml",
+        	template: "./Views/Shared/_Layout_Template.cshtml"
+        })
 	]),
 
 	// pretty terminal output

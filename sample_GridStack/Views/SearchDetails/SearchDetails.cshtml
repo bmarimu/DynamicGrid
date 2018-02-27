@@ -1,0 +1,74 @@
+﻿@model sample_GridStack.Models.SearchPeopleDetailModel
+
+<style>
+    /**CSS FOR THE RING**/
+
+    .glyphicon-ring {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 4px solid #ece0e0;
+        color: #808080;
+        display: inline-table;
+        text-align: center;
+    }
+        /**CSS FOR ICON WITH NO BACKGROUND COLOR**/
+
+        .glyphicon-ring .glyphicon-bordered {
+            font-size: 40px;
+            vertical-align: middle;
+            display: table-cell;
+        }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+            <div class="employee-profile-wrap">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Employee Profile</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <div class="glyphicon-ring ">
+                                <span class="glyphicon glyphicon glyphicon-user glyphicon-bordered"></span>
+                            </div>
+
+
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <div class="employee-basic">
+                                <h1>@Model.LastName, @Model.FirstName</h1>
+                                <div class="title">@Model.JobTitle <span class="company">at @Model.Company</span></div> 
+                            </div>
+                            <div class="employee-details row">
+                                <div class="col-sm-6"><strong>Department: </strong>@Model.Department</div>
+                                <div class="col-sm-6"><strong>Dept #: </strong>@Model.DepartmentNumber</div>
+                                <div class="col-sm-6"><strong>Work Location: </strong>@Model.WorkLocation</div>
+                                <div class="col-sm-6"><strong>Group: </strong> @Model.Group</div>
+                            </div>
+                            
+                            <div class="employee-contact">
+                                <h3>Contact Information</h3>
+                                <div class="row">
+                                    <div class="col-sm-6"><strong>Email: </strong><a href="mailto:@Model.Email">@Model.Email</a></div>
+                                    <div class="col-sm-6"><strong>Alt. Contact: </strong>@Model.AlternateContact</div>
+                                    <div class="col-sm-6"><strong>Office Phone: </strong>@Model.OfficePhone</div>
+                                    <div class="col-sm-6"><strong>Cell Phone: </strong>@Model.CellPhone</div>
+                                    <div class="col-sm-6"><strong>Mail Drop: </strong>@Model.MailDrop</div>
+                                    <div class="col-sm-6"><strong>Fax Number: </strong>@Model.FaxNumber</div>
+                                </div>
+                            </div>
+
+                            <a href="@Model.OrgChartLink" class="employee-btn">Organization Chart Link</a>
+                            <a href="@Model.ProfileSuccessfactorsLink" class="employee-btn">Profile Successfactors Link</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

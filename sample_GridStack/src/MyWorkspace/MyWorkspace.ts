@@ -1,6 +1,6 @@
 ﻿//import * as _ from 'underscore';
 import { widgets, WidgetsData } from "./Model/MyWorkspaceModel";
-
+import * as _ from 'lodash';
 export module MyWorkSpaceScript {
     export class MyWorkSpaceController {
 
@@ -8,32 +8,46 @@ export module MyWorkSpaceScript {
         public widgets: KnockoutObservableArray<widgets> = ko.observableArray([]);
         public widgetData: KnockoutObservable<WidgetsData> = ko.observable(null);
         public tileData: KnockoutComputedFunctions<string> = null;
+        public thing = ko.observable('');
 
+        public Stylefilesadded:string;
+        public Scriptfilesadded:string;
         constructor(_widgets: any) {
             let self = this;
-
+            
+            this.Stylefilesadded = "";
+            this.Scriptfilesadded = "";
             // this.tileData = ko.computed(this.GetTileData)
             //ko.mapping.fromJS(this.mywidgets, _widgets);
-            console.log("passed widgets info : " + JSON.stringify(_widgets));
+            // console.log("passed widgets info : " + JSON.stringify(_widgets));
             if (_widgets !== null) {
                 //let test_widget = new widgets(1,1, 4, 4);
                 _widgets.forEach(r =>
-                    self.tileInfo.push(new widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data,r.ScriptUri, r.StyleUri)));
+                    self.tileInfo.push(new widgets(r.TileId, r.x, r.y, r.width, r.height, r.TileDesc, r.data, r.ScriptUri, r.StyleUri, r.ReadUri,r.EditUri)));
                 // this.mywidgets.push(test_widget);
 
-                console.log("List we have now inside object:" + JSON.stringify(self.tileInfo()))
-                console.log("number of widgets : " + self.tileInfo().length);
+                // console.log("List we have now inside object:" + JSON.stringify(self.tileInfo()))
+                // console.log("number of widgets : " + self.tileInfo().length);
                 //self.ImportsScriptsForTiles();
+                let tile_counter:number=0
                 self.tileInfo().forEach((item: widgets) => {
-                    //self.checkloadjscssfile(item.scriptUri(), "js");
-                    //self.checkloadjscssfile(item.styleUri(), "css"); 
-
-                    console.log("Inside updating data for each tile:" + JSON.stringify(item.tileId));
-                    self.GetTileData(item.tileId());
+                    tile_counter = tile_counter + 1;
+                    var status = self.MakeTileDetailsRequest(item);
+                    console.log(`${tile_counter} call to tile :${status}`);
                 });
+                
             }
-
+            
         }
+
+
+        public Tile_Hover = (tileInfo: any) => {
+            console.log("on tile hover of tileid:" + tileInfo.tileId());
+            $(".smart-menu").hover(function () {
+                $('#smart-menu-' + tileInfo.tileId()).toggleClass('hidden');
+            });
+        }
+
 
         public loadjscssfile = (filename, filetype) => {
             if (filetype == "js")
@@ -42,13 +56,27 @@ export module MyWorkSpaceScript {
             if (filetype == "css")
                 this.loadCSS(filename);
         }
-
+        
         public loadCSS = (href) => {
             var cssLink = $("<link rel='stylesheet' type='text/css' href='" + href + "'>");
             $("head").append(cssLink);
         }
 
         public loadJS = (src) => {
+            //$.ajax({
+            //    url: src,
+            //    dataType: 'script',
+            //    beforeSend: function (xhr) { xhr.setRequestHeader('Ocp-Apim-Subscription-Key', 'd002f0985c3242dbbd1fe73eb97aff3e'); },
+            //    cache: false,
+            //    success: function (data) {
+            //        console.log('loaded scripts for ')
+            //    },
+            //    error: function () {
+            //        alert("error");
+            //    }
+            //});
+
+
             var jsLink = $("<script type='text/javascript' src='" + src + "'>");
             $("head").append(jsLink);
         }
@@ -65,8 +93,8 @@ export module MyWorkSpaceScript {
 
         public ImportsScriptsForTiles() {
             this.tileInfo().forEach((item: widgets) => {
-                this.checkloadjscssfile(item.scriptUri(), "js"); 
-                   this.checkloadjscssfile(item.styleUri(), "css"); 
+                this.checkloadjscssfile(item.scriptUri(), "js");
+                this.checkloadjscssfile(item.styleUri(), "css");
             });
 
         }
@@ -79,80 +107,214 @@ export module MyWorkSpaceScript {
         }
 
         public GetTileData = (tileId: string) => {
-            kendo.ui.progress($(".grid-stack-item-content"), true);
-            setTimeout(function () { kendo.ui.progress($(".grid-stack-item-content"), false); }, 8000);
-
-            //kendo.ui.progress($("#tile-content_" + tileId), true);
-            //kendo.ui.progress($(".grid-stack-item-content"), true);
 
             let self = this;
             let tileDataObj = new WidgetsData(tileId, '', '');
             //tileDataObj.TileId = tileId;
-            console.log("Value passed to this fun:" + tileId)
+            // console.log("Value passed to this fun:" + tileId)
             if (tileId === null || tileId == undefined)
                 return;
 
             let data: any = ko.toJS(tileDataObj);
 
-
+            //  console.log(ko.toJS(self.tileInfo()));
             // self.setDelay(tileId);
-            kendo.ui.progress($("#tile-content_" + tileId), true);
-            $.post("/Home/GetTileData/", data)
-                .done(function (response) {
-                    console.log("TileID:" + tileId);
-                    console.log(JSON.stringify(response));
+            //  kendo.ui.progress($("#tile-content_" + tileId), true);
+
+
+            let myTrigger;
+            NProgress.start();
+            $.ajax({
+                type: 'POST',
+                url: "/Home/GetAPITileData/",
+                data: data,
+                beforeSend: function (xhr) {
+
+                    myTrigger = setInterval(function () {
+                        NProgress.inc();
+                    }, 400);
+                },
+                complete: function () {
+
+                    NProgress.done();
+                    clearInterval(myTrigger);
+                },
+                success: function (response) {
+                    // console.log("TileID:" + tileId);
+                    // console.log(JSON.stringify(response));
                     const data = JSON.stringify(response);
-                    console.log("updated Data for : " + JSON.stringify(self.tileInfo().filter(x => x.tileId() === tileId).forEach(
-                        x => console.log(x.y, x.x, x.width, x.height, x.title, x.data))));
-                    self.tileInfo().filter(x => x.tileId() === tileId).forEach(y => y.data(response));
-                    kendo.ui.progress($("#tile-content_" + tileId), false);
-                    //  kendo.ui.progress($(".grid-stack-item-content"), false);
-                    //if (response.Success) {
+                    //  console.log("updated Data for : " + JSON.stringify(self.tileInfo().filter(x => x.tileId() === tileId).forEach(
+                    //     x => console.log(x.y, x.x, x.width, x.height, x.title, x.data))));
 
+                    //  console.log(JSON.stringify(self.tileInfo().filter(x => x.tileId() === tileId)));
 
-                    //    console.log("updated Data for : " + self.tileInfo().filter(x => x.tileId === tileId).forEach(
-                    //        x => console.log(x.y, x.x, x.width, x.height, x.title, x.data)));
-                    //}
-                    //else {
-                    //    console.log("Loading didn't work try refresh again!!");
-                    //}
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    console.log("Loading didn't work try refresh again!!");
-                    console.log(jqXHR);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                    kendo.ui.progress($("#tile-content_" + tileId), false);
-                });
+                    //   console.log("Lodash Changes:" + JSON.stringify(self.tileInfo()));
+                    self.tileInfo().forEach((item: widgets) => {
+                        if (item.tileId() === tileId)
+                            item.data(response);
+                    });
+                }
+            });
+            
+        }
+        
+        public MakeTileDetailsRequest = async (tileInfo: widgets) => {
+            try {
+               
+                return await Promise.all([
+                    this.CallScriptPromise(tileInfo.scriptUri(), 'js', tileInfo.tileId()),
+                    this.CallStylePromise(tileInfo.styleUri(), 'css', tileInfo.tileId()),
+                    this.CallDataPromise(tileInfo)
+                    ]);
 
+            }
+            catch (e) {
+                console.log('There was an error loading for this tile'+e);
+            }
+        }
+        
+        public CallScriptPromise = (url: string, type: string, tileId:string): Promise<string> => {
+            try {
+                //this.scriptfilesadded = "" //list of files already added
+                if (this.Scriptfilesadded.indexOf("[" + url + "]") == -1) {
+                    //this.loadjscssfile(url, type)
+                    this.Scriptfilesadded += "[" + url + "]" //List of files added in the form "[filename1],[filename2],etc"
 
+                    console.log("Loading Javascripts : " + url + "   of type:" + type);
 
-
-            //var some_html = "<div id='zz73jd'>" +
-            //    "<ul><li><a href='https://www.goog.com' target = '_blank' > Google </a></li>" +
-            //    "<li><a href=\"https://www.duquesnelight.com\" target = \"_blank\"> DuquesneLight </a>" +
-            //    "</li> <li> <a href=\"https://dlconnect-dev.dqe.com\"> DLConnect </a>" +
-            //    "</li></ul></div>";
-
-            //var some_html = "<div id='zz73je'>" +
-            //    "<ul><li><a href='https://www.Yahoo.com' target = '_blank' > Yahoo </a></li>" +
-            //    "<li><a href=\"https://www.duquesnelight.com\" target = \"_blank\"> DuquesneLight </a>" +
-            //    "</li> <li> <a href=\"https://dlconnect-dev.dqe.com\"> DLConnect </a>" +
-            //    "</li></ul></div>";
-
-
-            //var some_html = "<div id='zz73jf'>" +
-            //    "<ul><li><a href='https://www.test.com' target = '_blank' > Test </a></li>" +
-            //    "<li><a href=\"https://www.duquesnelight.com\" target = \"_blank\"> DuquesneLight </a>" +
-            //    "</li> <li> <a href=\"https://dlconnect-dev.dqe.com\"> DLConnect </a>" +
-            //    "</li></ul></div>";
-
-
-            //this.tileInfo().forEach(x => x.data(some_html));
-            //console.log("updated Data : " + this.tileInfo().forEach(
-            //    x => console.log(x.y(), x.x(), x.width(), x.height(), x.title, x.data())));
+                    return new Promise<string>(resolve => {
+                        $.ajax({
+                            dataType: 'script',
+                            url: "/Home/GetApiScript/",
+                            data: { 'url': url, 'type': type },
+                            //beforeSend: function () { $("#loading-progress_" + tileId).show(); }, // <Show OverLay
+                            success: function (response) {
+                                console.log('successfully loaded scripts..');
+                                $("#loading-progress_" + tileId).hide();
+                            },
+                            //complete: function () { $("#loading-progress_" + tileId).hide(); } //<Hide Overlay
+                        });
+                    });
+                }
+                else {
+                    return new Promise<string>(resolve => {
+                        console.log("file already added!");
+                    });
+                }
+            }
+            catch (e) {
+                console.log("This error happens when loading a data: " + e);
+            }
         }
 
-    }
+        public CallDataPromise = (tileInfo: widgets): Promise<string> => {
+            try {
+                return new Promise<string>(resolve => {                
+                    let myTrigger;
+                    NProgress.start();
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Home/GetAPITileData/",
+                        data: { 'resource': tileInfo.readUri() },
+                    
+                        beforeSend: function (xhr) {
+                            $("#loading-progress_" + tileInfo.tileId()).show();
+                            myTrigger = setInterval(function () {
+                                NProgress.inc();
+                            }, 400);
+                        },
+                        complete: function () {
+                            NProgress.done();
+                            clearInterval(myTrigger);
+                            $("#loading-progress_" + tileInfo.tileId()).hide();
+                        },
+                        success: function (response) {
+                            if (response.Success)
+                                tileInfo.data(response.Message);
+                            else
+                                console.log("Failed to get tile data response or its empty..");
+                        }
+                       
+                    });
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+
+        public CallStylePromise  = (url: string,type:string,tileId:string): Promise<string> => {
+            if (this.Stylefilesadded.indexOf("[" + url + "]") == -1) {
+                //this.loadjscssfile(url, type)
+                this.Stylefilesadded += "[" + url + "]" //List of files added in the form "[filename1],[filename2],etc"
+
+                console.log("Loading styles: " + url + "   of type:" + type);
+
+                return new Promise<string>(resolve => {
+                    
+                    $.ajax({
+                        url: "/Home/GetApiScript/",
+                        type: 'GET',
+                        dataType:'html',
+                        data: { 'url': url, 'type': type },
+                        beforeSend: function () { $("#loading-progress_" + tileId).show(); }, // <Show OverLay
+                        success: function (response) {
+                            $("head").append(`  <style> ${response} </style>`)
+                        },
+                        complete: function () { $("#loading-progress_" + tileId).hide(); } //<Hide Overlay
+                    });
+                });
+            }
+            else {
+                return new Promise<string>(resolve => {
+                    console.log("file already added!");
+                    //return 'true';
+                });
+            }
+        }
 
 
+        public EditTile = (tileInfo: any) => {
+            
+            console.log(JSON.stringify(tileInfo.readUri()) + "is passed for Editing...");
+            try {
+                return new Promise<string>(resolve => {
+                    let myTrigger;
+                    NProgress.start();
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Home/GetAPIEditTileData/",
+                        data: { 'resource': tileInfo.editUri() },
+
+                        beforeSend: function (xhr) {
+                            //$("#loading-progress_" + tileInfo.tileId()).show();
+                            myTrigger = setInterval(function () {
+                                NProgress.inc();
+                            }, 400);
+                        },
+                        complete: function () {
+                            NProgress.done();
+                            clearInterval(myTrigger);
+                            //$("#loading-progress_" + tileInfo.tileId()).hide();
+                        },
+                        success: function (response) {
+                            if (response.Success) {
+                                tileInfo.data(response.Message);
+                                localStorage.clear();
+                                localStorage.setItem('currentTileId', JSON.stringify(tileInfo.tileId()));
+                            }
+                            else
+                                console.log("Failed to get tile data response or its empty..");
+                        }
+
+                    });
+                });
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+        
+}
+    
 }

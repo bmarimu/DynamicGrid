@@ -60,12 +60,44 @@ namespace sample_GridStack.Controllers
         }
 
         [HttpPost]
-        public async Task<string> GetAPITileData(MyWorkspaceTileData model)
+        public async Task<JsonResult> GetAPITileData(string resource)
         {
-            var tiledata = await model.GetTileData(model.TileId,"bmarimuthu@dqulight.com");
-            return tiledata.TileDesc;
+            MyWorkspaceTileData model = new MyWorkspaceTileData();
+            var tiledata = await model.GetTileData(resource);
+            if (!String.IsNullOrEmpty(tiledata))
+                return Json(new ModelResult() { Success = true, Message = tiledata });
+            else
+                return Json(new ModelResult() { Success = false });
+        
+           // return tiledata;
 
         }
+        [HttpPost]
+        public JsonResult GetAPIEditTileData(string resource)
+        {
+            MyWorkspaceTileData model = new MyWorkspaceTileData();
+            var tiledata = model.GetEditTileData(resource);
+            if (!String.IsNullOrEmpty(tiledata))
+                return Json(new ModelResult() { Success = true, Message = tiledata });
+            else
+                return Json(new ModelResult() { Success = false });
+
+            // return tiledata;
+
+        }
+        [HttpGet]
+        public async Task<FileResult> GetApiScript(string url,string type)
+        {
+            MyWorkspaceTileData model = new MyWorkspaceTileData();
+            var result = await model.GetTileScript(url);
+            if(type == "js")
+                return File(result , "text/javascript");
+            else
+               return File(result, "text/css");
+        }
+
+
+
 
     }
 }

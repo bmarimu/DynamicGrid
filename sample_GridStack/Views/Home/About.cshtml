@@ -1,7 +1,11 @@
 ﻿@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 @model sample_GridStack.Models.MyWorkspaceViewModel
 @using Newtonsoft.Json
+@*<link href="~/Content/tile-bookmark.css" rel="stylesheet" />*@
+<link href="~/Content/myworkspace-grid.css" rel="stylesheet" />
+<link href="~/Content/nprogress.css" rel="stylesheet" />
 <link href="~/Content/tile-bookmark.css" rel="stylesheet" />
+<<<<<<< HEAD
 <div class="myworkspace-wrap">
     <br>
 
@@ -48,8 +52,65 @@
         </div>
     </div>
     @*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>*@
+=======
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.js"></script>
+<script src="~/src/MyWorkspace/Bookmark.js"></script>
 
 
+<style>
+    .dropbtn {
+        border-color: #808080;
+        color: black;
+        padding: 5px;
+        font-size: 18px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+>>>>>>> fef7fe79752afe1d91c9b134e77fe55fc7ade08c
+
+    .dropdown:hover .dropbtn {
+        /*background-color: #8490c6;*/
+        border-color: #808080;
+        background-color:transparent;
+    }
+</style>
+<style>
+    .loading-progress ul {
+        margin-left: 0px;
+        margin-top: 0px;
+        list-style: none;
+    }
+
+<<<<<<< HEAD
     <template id="gridstack-template">
         <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes">
             <div class="grid-stack-item" data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position}">
@@ -64,64 +125,223 @@
     </template>
 </div>
 @*<script>
+=======
+    .loading-progress li {
+        float: left;
+        width: 12px;
+        height: 24px;
+        background: #aeb5da;
+        border: 1px solid #8490c6;
+        box-sizing: border-box;
+        margin-right: 8px;
+        opacity: 0.2;
+    }
 
-        var _widgets = [
-            { x: 0, y: 0, width: 3, height: 4, title: 'Bookmark', data: '', titleid:'zz73jd' },
-            { x: 4, y: 0, width: 3, height: 4, title: 'MyApps', data: '', titleid: 'zz73je'},
-            { x: 8, y: 0, width: 3, height: 4, title: 'MyResources', data: '', titleid: 'zz73jf'}
+        .loading-progress li:nth-child(1) {
+            animation-name: anim;
+            animation-duration: .9s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+>>>>>>> fef7fe79752afe1d91c9b134e77fe55fc7ade08c
 
-        ];
+        .loading-progress li:nth-child(2) {
+            animation-name: anim;
+            animation-duration: .9s;
+            animation-delay: .3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
 
-        var vm = new sample_GridStack.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
-        ko.applyBindings(vm);
+        .loading-progress li:nth-child(3) {
+            animation-name: anim;
+            animation-duration: .9s;
+            animation-delay: .6s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    .child {
+        position: absolute;
+        top: 50%;
+        left:30%;
+        transform: translateY(-50%);
+        /*height: 120px;  to be more intuitive */
+        width: 50%; /* take the parent's width */
+        align-content:center;
+        text-align:center;
+    }
 
-    </script>*@
+    @@keyframes anim {
+        from {
+            opacity: 1;
+            transform: scale(1.1);
+        }
 
+        to {
+            opacity: 0.2;
+            transform: scale(1);
+        }
+    }
+
+    .grid-stack-item:hover .smart-menu {
+        zoom: 1;
+        filter: alpha(opacity=45);
+        opacity: 0.45;
+        -webkit-transition: opacity .5s ease-in-out;
+        -moz-transition: opacity .5s ease-in-out;
+        -ms-transition: opacity .5s ease-in-out;
+        -o-transition: opacity .5s ease-in-out;
+        transition: opacity .5s ease-in-out;
+    }
+
+    /*Fade out the particular DIV when user hover on that DIV*/
+    .grid-stack-item .smart-menu:hover {
+        box-shadow: 3px 3px 15px #666;
+        border-color: #00aeef;
+        /*color: #fff;*/
+        cursor: pointer;
+        /*Opacity*/
+        zoom: 1;
+        filter: alpha(opacity=100);
+        opacity: 1;
+    }
+    #hover-content{
+        display:none;
+    }
+        .grid-stack-item .smart-menu:hover #hover-content {
+display:block;
+        }
+        
+        
+        .bookmark-edit {
+            margin-top: 50px;
+        }
+    .btn-section{
+        margin-top:50px;
+        text-align:center;
+    }
+
+    
+    .dropdown-menu {
+        padding: 0;
+        margin: 0;
+        width: 130px;
+        font-family: Arial;
+        display: inline-table;
+        position: relative;
+        border: solid 1px #CCCCCC;
+        border-bottom-style: none;
+        background-color: #F4F4F4;
+    }
+
+        .dropdown-menu .menu-item {
+            display: none;
+        }
+
+        .dropdown-menu .menu-item-link {
+            display: table-cell;
+            border-bottom: solid 1px #CCCCCC;
+            text-decoration: none;
+            color: rgba(89,87,87,0.9);
+            height: 30px;
+            padding: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .dropdown-menu:hover .menu-item {
+            border-bottom-style: solid;
+        }
+
+        .dropdown-menu .menu-item-link:hover {
+            background-color: #DDDDDD;
+        }
+
+        .dropdown-menu:hover .menu-item {
+            display: table-row;
+        }
+
+        .dropdown-menu .menu-item.active {
+            display: table-header-group;
+        }
+
+            .dropdown-menu .menu-item.active .menu-item-link:after {
+                width: 0;
+                height: 0;
+                content: "";
+                position: absolute;
+                top: 12px;
+                right: 8px;
+                border-top: 4px solid rgba(0, 0, 0, 1);
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+            }
+
+    /*.dropdown-content li ul li {
+        border-top: 0px;
+    }*/
+
+
+</style>
+<div class="container body-content">
+    <div class="myworkspace-wrap">
+        <div class="row myworkspace-container-row">
+            <div class="myworkspace-container centered col-xs-12">
+                <h3>My Workspace</h3>
+                <p>
+                    Welcome To Your Workspace. Here you will find interactive tools to help you organize your day to day activities.
+                    Please check back periodically to see new tools as they become available.
+                </p>
+            </div>
+        </div>
+
+        <div class="spacer-2x-bottom"></div>
+        <div class="row">
+            <div class="grid-myworkspace">
+                <div class="spacer-2x-bottom"></div>
+                <div data-bind="component: {name: 'my-workspace', params: $data}"></div>
+                <div class="spacer-2x-bottom"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*<div data-bind="component: {name: 'dashboard-grid', params: $data}"></div>*@
+
+
+<template id="gridstack-template">
+    <div class="grid-stack" data-bind="foreach: {data: widgets, afterRender: AfterAddWidget}" data-gs-animate="yes" >
+        <div class="grid-stack-item " data-bind="attr: {'data-gs-x': $data.x, 'data-gs-y': $data.y, 'data-gs-width': $data.width, 'data-gs-height': $data.height,'data-gs-auto-position':$data.auto_position},event:{mouseover:$parent.Tile_Hover}" >
+           
+            <div class="grid-stack-item-content smart-menu" data-bind="attr: {'id': 'tile-content_' + $data.tileId()}" >
+                <div class="dropdown" id="hover-content" data-bind="attr:{'id':smart-menu-"+$data.tileId()}"  style="width:30px; height:auto; background:#00aeef; color:#FFF; padding:2px 2px; text-align:center; top:0; position:absolute; right:0;">
+                    <button class="dropbtn">...</button>
+                    <div class="dropdown-content">
+                       <ul class="dropdown-menu">
+                        <li class=""menu-item"> <a href="#" data-bind="click: $root.EditTile">Edit</a></li>
+                        <li class=""menu-item"><a href="#">Add</a></li>
+                        <li class=""menu-item"><a href="#">Delete Tile</a></li></ul>
+                    </div>
+                </div>
+
+                <div>
+                    @*<div id="tile-info" data-bind="text:$data.title">test</div>*@
+                    <div  data-bind="attr: {'id': 'loading-progress_' + $data.tileId()}" class="loading-progress child" >
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div data-bind="attr:{'id':'tile-info-'+$data.tileId()}, html:$data.data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <script>
-
-
-
-
-
-
-
-    //function checkloadjscssfile(filename, filetype) {
-    //    var filesadded = "" //list of files already added
-    //    if (filesadded.indexOf("[" + filename + "]") == -1) {
-    //        loadjscssfile(filename, filetype)
-    //        filesadded += "[" + filename + "]" //List of files added in the form "[filename1],[filename2],etc"
-    //    }
-    //    else
-    //        alert("file already added!")
-    //}
-
-
-
-    //function loadjscssfile(filename, filetype) {
-    //    if (filetype == "js") { //if filename is a external JavaScript file
-    //        //var fileref = document.createElement('script')
-    //        //fileref.setAttribute("type", "text/javascript")
-    //        //fileref.setAttribute("src", filename)
-    //        loadJS(filename);
-    //    }
-    //    else if (filetype == "css") { //if filename is an external CSS file
-    //        //var fileref = document.createElement("link")
-    //        //fileref.setAttribute("rel", "stylesheet")
-    //        ////fileref.setAttribute("type", "text/css")
-    //        //fileref.setAttribute("href", filename)
-    //        //fileref.setAttribute("media", "all")
-    //        loadCSS(filename);
-    //    }
-    //    if (typeof fileref != "undefined") {
-    //        alert(JSON.stringify(fileref));
-    //        document.getElementsByTagName("head")[0].appendChild(fileref)
-    //    }
-    //}
-
-
     console.log("loading MyWorkspace Page..");
-    //Get the tile collection from the model
    var modelJson = JSON.stringify(@Html.Raw(JsonConvert.SerializeObject(Model)));
     jsonObj = JSON.parse(modelJson);
     console.log(JSON.stringify(jsonObj.TileCollection));
@@ -129,4 +349,5 @@
     console.log(_widgets);
     var vm = new sample_GridStack.MyWorkSpaceScript.MyWorkSpaceController(_widgets);
     ko.applyBindings(vm);
+   
 </script>

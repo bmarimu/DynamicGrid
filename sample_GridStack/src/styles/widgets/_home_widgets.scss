@@ -1,0 +1,203 @@
+﻿/* Begin Alerts and Reminders */
+.alertReminderItem {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+
+    .glyphicon {
+        padding-right: 0px;
+    }
+
+    .alertReminderDesc {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+#divAlertsContainer {
+    background-color: #FFF200; /* x-site = #ffcd42 */
+}
+
+
+#divReminderDesc a, #divAlertDesc a {
+    color: #333333;
+    text-decoration: underline;
+}
+
+.alertReminderContainer {
+    padding: 5px 15px 10px 15px;
+    max-width: inherit;
+}
+
+.alertReminderTitle {
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alertReminderIcon {
+    margin-right: 20px;
+
+    &.glyphicon {
+        top: 3px;
+    }
+}
+
+#divRemindersContainer {
+    background-color: #78be43;
+}
+
+.glyphicon-menu-right-custom:before {
+    content: "\E258\E258";
+    letter-spacing: -6px;
+}
+/* End Alerts */
+
+
+/*News Styles*/
+
+.news-section {
+    background-color: #f0f0f0;
+    padding-left: 0em;
+    padding-right: 0em;
+
+    .no-left-padding {
+        padding-left: 0;
+    }
+
+    .img-style {
+        height: auto;
+        max-width: 100%;
+        margin-bottom: 0px;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: transparent;
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+
+    @media (max-width: 767px) {
+        .img-style {
+            float: none !important;
+            margin: 0 auto;
+        }
+    }
+
+    .news-title {
+        color: #F38131;
+        font-weight: bold;
+        margin: .2em .2em 10px;
+        font-size: 1.2em;
+        line-height: 1.3em;
+    }
+
+    .news-summary {
+        width: 97%;
+        margin-bottom: 1em;
+        padding-left: .5em;
+        padding-right: .5em;
+        color: #808080;
+        font-size: 1em;
+    }
+
+    .news-noimage {
+        background-color: #fff;
+        padding: 1.5em;
+    }
+}
+
+
+.corp-citizenship-title > a {
+    color: #F38131;
+    font-weight: bold;
+}
+
+.corp-citizenship-title {
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+
+
+.corp-citizenship-summary {
+    color: #808080;
+    font-size: 1em;
+    text-align: justify;
+}
+
+
+
+.news-paddingbottom {
+    padding-bottom: 1em;
+}
+
+
+/*
+      ##Device = Desktops
+      ##Screen = 1281px to higher resolution desktops
+    */
+
+@media (min-width: 1281px) {
+    .filler {
+        display: none;
+    }
+}
+
+/*
+      ##Device = Laptops, Desktops
+      ##Screen = B/w 1025px to 1280px
+    */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .filler {
+        display: none;
+    }
+}
+
+
+
+/*News Style End*/
+
+/*DLCInTheNews*/
+.dlcnews-links-text {
+    color: #000;
+    font-weight: 400;
+    font-size: 1em;
+    font-variant: normal;
+    text-transform: none;
+    padding: 5px 10px;
+    line-height: 1.3em;
+    margin: 15px 0;
+}
+
+.dlcnews-links-text:hover, .dlcnews-text:focus {
+    background-color: #fff300;
+    font-size: 1em;
+}
+
+.dlcnews-title {
+    padding-bottom: 1px;
+}
+
+.dlcnews-spacer {
+    /*padding-bottom: .3em;*/
+}
+
+.dlcnews-section {
+    padding-top: 10px;
+    overflow: auto;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    @media (min-width: 768px) {
+        height: 280px;
+    }
+}
+
+@media (min-width: 768px) {
+    .dlcnews-box {
+        height: 280px;
+    }
+}
+/*End of DLCInTheNews*/

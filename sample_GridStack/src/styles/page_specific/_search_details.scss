@@ -1,0 +1,65 @@
+﻿.container-fluid {
+    background-color: #f0f0f0;
+}
+
+.employee-profile-wrap {
+    box-shadow: 0 1px 2px rgba(#000, 0.5);
+    background-color: #fff;
+
+    .employee-basic {
+        margin-bottom: 0.75em;
+
+        h1 {
+            margin: 0;
+        }
+
+        .title {
+            font-size: 1.35em;
+        }
+
+        .company {
+            font-size: 0.75em;
+            color: darken($dlc-gray-1, 55%);
+        }
+    }
+
+    .employee-details {
+        font-size: 0.9em;
+
+        > div:nth-child(n + 3) {
+            margin-top: 10px
+        }
+    }
+
+    .employee-contact {
+        margin: 3em 0;
+
+        h3 {
+            text-transform: none;
+            color: #000;
+            font-size: 1.75em;
+            font-weight: bold;
+        }
+
+        .row {
+            > div:nth-child(n + 3) {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .employee-btn {
+        background: -moz-linear-gradient(top, rgba(lighten($brand-primary, 15%), 0.9), $brand-primary); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(lighten($brand-primary, 15%), 0.9), $brand-primary); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(top, rgba(lighten($brand-primary, 15%), 0.9), $brand-primary); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#24feffff', endColorstr='#00aeef',GradientType=0 ); /* IE6-9 */
+        text-transform: uppercase;
+        text-align: center;
+        padding: 10px;
+        margin: 10px 10px 0 0;
+        font-size: 0.85em;
+        bottom: 5px;
+        color: #fff;
+        display: inline-block;
+    }
+}

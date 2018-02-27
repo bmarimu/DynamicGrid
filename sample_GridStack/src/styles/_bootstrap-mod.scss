@@ -14,9 +14,9 @@ BOOTSTRAP ELEMENTS FOR DLC THEME:
 /*  FOR WIDGETS WITH GRAY BACKGROUNDS   */
 
 .gray-cont {
-  background-color: #f0f0f0;
-  width: 100%;
-  height: 100%;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
 }
 
 .orange-container {
@@ -101,7 +101,7 @@ MAKE COLUMNS THE SAME HEIGHT WHEN NECESSARY
 }
 
 .info-center-row-spacer {
-    padding-top:10px;
+    padding-top: 10px;
 }
 
 .apps-pad {
@@ -113,20 +113,20 @@ MAKE COLUMNS THE SAME HEIGHT WHEN NECESSARY
 }
 
 
-.widget-spacer-left{
-    margin-left:$widget-spacer-margin;
+.widget-spacer-left {
+    margin-left: $widget-spacer-margin;
 }
 
-.widget-spacer-right{
-    margin-right:$widget-spacer-margin;
+.widget-spacer-right {
+    margin-right: $widget-spacer-margin;
 }
 
-.widget-spacer-top{
-    margin-top:$widget-spacer-margin;
+.widget-spacer-top {
+    margin-top: $widget-spacer-margin;
 }
 
-.widget-spacer-bottom{
-    margin-bottom:$widget-spacer-margin;
+.widget-spacer-bottom {
+    margin-bottom: $widget-spacer-margin;
 }
 
 /*
@@ -160,7 +160,7 @@ footer.well {
 .container-dlc:after,
 .row.is-flex:before,
 .row.is-flex:after {
-  content: normal; // IE doesn't support `initial`
+    content: normal; // IE doesn't support `initial`
 }
 
 
@@ -192,13 +192,13 @@ footer.well {
 h1,
 .h1 {
     color: black;
-    font-family: Gotham-Bold;
+    font-weight: bold;
 }
 
 h2,
 .h2 {
     color: black;
-    font-family: Gotham-Bold;
+    font-weight: bold;
 }
 
 h3,
@@ -208,9 +208,9 @@ h3,
 }
 
 .h3-sm {
-	font-size: 1.5em;
-	margin: 10px;
-	text-align: center;
+    font-size: 1.5em;
+    margin: 10px;
+    text-align: center;
 }
 
 h4,
@@ -220,16 +220,16 @@ h4,
 }
 
 .h4-sm {
-	font-size: 1.5em;
-	padding-top: 10px;
-	text-align: center;
-    margin-top:0px;
+    font-size: 1.5em;
+    padding-top: 10px;
+    text-align: center;
+    margin-top: 0px;
 }
 
 h5,
 .h5 {
     color: $brand-primary;
-    font-family: Gotham-Bold;
+    font-weight: bold;
     font-variant: small-caps;
     text-transform: uppercase;
 }
@@ -237,7 +237,7 @@ h5,
 h6,
 .h6 {
     color: $brand-info;
-    font-family: Gotham-Bold;
+    font-weight: bold;
     font-variant: small-caps;
     text-transform: uppercase;
 }
@@ -248,14 +248,14 @@ h6,
 /* TOP NAV SEARCH CONTROL & LINKS */
 
 .icon-text {
-    font-family: "Gotham-Light";
+    font-weight: 300;
     font-size: .85em;
     padding-top: .5em;
 }
 
 .quicklinks-text {
     color: #000;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: .85em;
     /*font-variant: small-caps;
     text-transform: uppercase;*/
@@ -269,7 +269,7 @@ h6,
 
 .contactw-title {
     color: $brand-info;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: 1.15em;
     font-variant: small-caps;
     text-transform: uppercase;
@@ -278,7 +278,7 @@ h6,
 
 .contactw-bold {
     color: #000;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: 1em;
     font-variant: small-caps;
     text-transform: uppercase;
@@ -287,9 +287,10 @@ h6,
 
 .contactw-text {
     color: #000;
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: 1em;
     text-align: right;
+
     &:hover,
     &:focus,
     {
@@ -301,6 +302,7 @@ h6,
 p.biz-link > a {
     color: #000;
     text-decoration: none;
+
     &:hover,
     &:focus,
     {
@@ -312,7 +314,7 @@ p.biz-link > a {
 
 .pull-quote {
     color: #000;
-    font-family: "Gotham-Italic";
+    font-style: italic;
     font-size: 1.25em;
     line-height: 1.5em;
     margin: .75em 0 .75em 0;
@@ -322,7 +324,6 @@ p.biz-link > a {
 .img-caption,
 .welcome-date {
     color: $brand-primary;
-    font-family: "Gotham-Book";
     font-size: .75em;
     line-height: 1em;
 }
@@ -333,7 +334,7 @@ p.biz-link > a {
 
 .widget-bold {
     color: #000;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: .75em;
     font-variant: small-caps;
     text-transform: uppercase;
@@ -342,7 +343,7 @@ p.biz-link > a {
 
 .widgetlinks-text {
     color: #000;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: .75em;
     font-variant: small-caps;
     text-transform: uppercase;
@@ -357,7 +358,7 @@ p.biz-link > a {
 
 .widget-contact {
     color: #000;
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: .75em;
     text-align: right;
 
@@ -377,11 +378,11 @@ p.biz-link > a {
 .nav-brand {
     margin-top: -1em;
     float: left;
-    margin-top:0px;
+    margin-top: 0px;
     font-size: 20px;
     line-height: 24px;
     height: auto;
-    margin-left:20px;
+    margin-left: 20px;
 }
 
 
@@ -394,7 +395,7 @@ nav,
     background-color: transparent;
     border-color: transparent;
     color: #000;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
 .navbar-default,
@@ -417,7 +418,7 @@ nav,
 .eyebrow-link {
     color: #000;
     float: left;
-    font-family: Gotham-Bold;
+    font-weight: bold;
     font-size: .75em;
     font-variant: small-caps;
     margin-top: 1em;
@@ -520,12 +521,12 @@ input > .search-header {
 }
 
 .pull-quote {
-  color: #000;
-  font-family: "Gotham-Italic";
-  font-size: 1.25em;
-  line-height: 1.5em;
-  margin: .75em 0 .75em 0;
-  text-align: center;
+    color: #000;
+    font-style: italic;
+    font-size: 1.25em;
+    line-height: 1.5em;
+    margin: .75em 0 .75em 0;
+    text-align: center;
 }
 
 /*------------------------------------------
@@ -541,14 +542,14 @@ input > .search-header {
 
 .foot-sm-head-orange {
     color: #f6921d;
-    font-family: "Gotham-Medium";
+    font-weight: 500;
     font-size: .75em;
     line-height: .75em;
 }
 
 .foot-sm-brand-orange > a {
     color: #f6921d;
-    font-family: "Gotham-Medium";
+    font-weight: 500;
     font-size: .75em;
     font-variant: small-caps;
     text-transform: uppercase;
@@ -561,13 +562,13 @@ input > .search-header {
 
 .foot-md-head-orange {
     color: #f6921d;
-    font-family: "Gotham-Bold";
+    font-weight: bold;
     font-size: 1em;
 }
 
 .foot-sm-head-blue {
     color: #00AEEF;
-    font-family: "Gotham-Medium";
+    font-weight: 500;
     font-size: 1em;
     margin-left: 1em;
     margin-top: .5em;
@@ -575,7 +576,7 @@ input > .search-header {
 
 .foot-sm-gray {
     color: #cfcfcf;
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: .75em;
     width: 90%;
     margin-bottom: 1em;
@@ -583,7 +584,7 @@ input > .search-header {
 
 .foot-sm-gray-indent {
     color: #cfcfcf;
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: .75em;
     width: 90%;
     margin-bottom: 1em;
@@ -593,7 +594,7 @@ input > .search-header {
 
 .foot-md-white {
     color: #fff;
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: 1em;
     line-height: 1.2em;
     width: 90%;
@@ -644,31 +645,31 @@ input > .search-header {
 }
 
 .popover-content {
-    font-family: "Gotham-Book";
+    font-weight: 400;
     font-size: .75em;
 }
 
-.popoverBlue{
-    border-color:$status-blue;
+.popoverBlue {
+    border-color: $status-blue;
 }
 
-.popoverBlue.top>.arrow,.popoverBlue.righ>.arrow,.popoverBlue.bottom>.arrow,.popoverBlue.left>.arrow{
+.popoverBlue.top > .arrow, .popoverBlue.righ > .arrow, .popoverBlue.bottom > .arrow, .popoverBlue.left > .arrow {
     border-top-color: $status-blue;
 }
 
-.popoverYellow{
-    border-color:#e6da00;
+.popoverYellow {
+    border-color: #e6da00;
 }
 
-.popoverYellow.top>.arrow,.popoverYellow.right>.arrow,.popoverYellow.bottom>.arrow,.popoverYellow.left>.arrow{
+.popoverYellow.top > .arrow, .popoverYellow.right > .arrow, .popoverYellow.bottom > .arrow, .popoverYellow.left > .arrow {
     border-top-color: #e6da00;
 }
 
-.popoverRed{
-    border-color:#D0021B;
+.popoverRed {
+    border-color: #D0021B;
 }
 
-.popoverRed.top>.arrow,.popoverRed.right>.arrow,.popoverRed.bottom>.arrow,.popoverRed.left>.arrow{
+.popoverRed.top > .arrow, .popoverRed.right > .arrow, .popoverRed.bottom > .arrow, .popoverRed.left > .arrow {
     border-top-color: #D0021B;
 }
 
@@ -719,7 +720,7 @@ input > .search-header {
 
 .slider-header {
     color: #000;
-    font-family: Gotham-Bold;
+    font-weight: bold;
     font-size: 1.4em;
 
     @media only screen and (max-width: 767px) {
@@ -733,7 +734,7 @@ input > .search-header {
 
 a.slider-link {
     color: #00aeef;
-    font-family: Gotham-Bold;
+    font-weight: bold;
     font-size: 1.2em;
 
     @media only screen and (max-width: 767px) {
@@ -753,7 +754,7 @@ a.slider-link {
 .slider-text {
     white-space: nowrap;
     color: rgb(34, 34, 34);
-    font-family: Gotham-Book;
+    font-weight: 400;
     font-size: 1.2em;
     line-height: 1.5em;
     position: absolute;
@@ -779,12 +780,12 @@ a.slider-link {
 
 /* begin homepage */
 
-.hp-sm-widget{
-    max-width:$container-dlc-max-width / 3;
+.hp-sm-widget {
+    max-width: $container-dlc-max-width / 3;
 }
 
-.hp-lg-widget{
-    max-width:$container-dlc-max-width * 2 / 3;
+.hp-lg-widget {
+    max-width: $container-dlc-max-width * 2 / 3;
 }
 
 .hp-gray-bg-widget, .gray-bg-widget {
@@ -794,8 +795,8 @@ a.slider-link {
 /* end homepage */
 
 /* OfficerTeam */
-.accordion-dlc{
+.accordion-dlc {
     background-color: $gray-bg;
-    padding:20px;
-    padding-bottom:4px; /* 20px (above) - 1em (margin)*/
+    padding: 20px;
+    padding-bottom: 4px; /* 20px (above) - 1em (margin)*/
 }
